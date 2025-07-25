@@ -3,8 +3,232 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LearnCodeHub Quiz App</title>
+  <title>CodeForCampus Quiz App</title>
   <style>
+
+
+
+/* Ensure content scales nicely */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Max width container for main screens */
+.start-screen,
+.quiz-screen,
+.history-screen {
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Adjust padding for smaller devices */
+@media (max-width: 600px) {
+  body {
+    padding: 0 10px;
+  }
+  header {
+    font-size: 1.5em;
+    padding: 0.8em;
+  }
+  select, button, input[type="number"] {
+    width: 100%;
+    margin: 0.5em 0;
+  }
+  button {
+    padding: 10px;
+  }
+  .question-container {
+    padding: 15px;
+    margin: 15px 0;
+  }
+  .option {
+    padding: 10px;
+    font-size: 1em;
+  }
+  #timer {
+    font-size: 1.1em;
+  }
+  #result {
+    font-size: 1.3em;
+  }
+}
+
+/* Larger screens improvements */
+@media (min-width: 601px) {
+  body {
+    padding: 20px;
+  }
+  .question-container {
+    margin: 20px 0;
+  }
+  .option {
+    font-size: 1.1em;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     body {
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(to right, #d1c4e9, #f8bbd0);
