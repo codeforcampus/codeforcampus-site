@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Compiler - CodeForCampus</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3f4f6;
+      color: #111827;
+    }
+
+    header {
+      background-color: #1e3a8a;
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .editor-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .editor {
+      background-color: #0f172a;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .editor label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #facc15;
+      font-weight: bold;
+    }
+
+    .editor textarea {
+      width: 100%;
+      height: 200px;
+      background-color: #1e293b;
+      color: #e2e8f0;
+      border: none;
+      border-radius: 6px;
+      padding: 0.75rem;
+      resize: vertical;
+      font-family: monospace;
+      font-size: 0.95rem;
+    }
+
+    .run-btn {
+      padding: 0.75rem 1.5rem;
+      background-color: #22c55e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: 0.3s;
+    }
+
+    .run-btn:hover {
+      background-color: #16a34a;
+    }
+
+    .output {
+      background-color: #f1f5f9;
+      border: 2px dashed #cbd5e1;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      background: white;
+      border-radius: 6px;
+    }
+
+    footer {
+      background-color: #1e3a8a;
+      text-align: center;
+      padding: 1rem;
+      color: white;
+      margin-top: 3rem;
+    }
+
+    @media(max-width: 768px) {
+      .editor-section {
+        grid-template-columns: 1fr;
+      }
+
+      .editor textarea {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    🧑‍💻 LearnCodeHub Live Compiler
+  </header>
+
+  <div class="container">
+    <div class="editor-section">
+      <div class="editor">
+        <label for="htmlCode">HTML</label>
+        <textarea id="htmlCode" placeholder="Write HTML code here..."></textarea>
+      </div>
+      <div class="editor">
+        <label for="cssCode">CSS</label>
+        <textarea id="cssCode" placeholder="Write CSS code here..."></textarea>
+      </div>
+      <div class="editor">
+        <label for="jsCode">JavaScript</label>
+        <textarea id="jsCode" placeholder="Write JavaScript code here..."></textarea>
+      </div>
+    </div>
+
+    <button class="run-btn" onclick="runCode()">▶ Run Code</button>
+
+    <div class="output">
+      <iframe id="output"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 LearnCodeHub | Practice. Learn. Succeed.
+  </footer>
+
+  <script>
+    function runCode() {
+      const html = document.getElementById("htmlCode").value;
+      const css = "<style>" + document.getElementById("cssCode").value + "</style>";
+      const js = "<script>" + document.getElementById("jsCode").value + "<\/script>";
+      const output = document.getElementById("output");
+      output.srcdoc = html + css + js;
+    }
+  </script>
+</body>
+</html>

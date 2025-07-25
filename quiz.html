@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LearnCodeHub Quiz App</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #d1c4e9, #f8bbd0);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      background-color: #512da8;
+      color: white;
+      padding: 1em;
+      font-size: 2em;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .start-screen, .quiz-screen, .history-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      width: 100%;
+      max-width: 600px;
+    }
+    select, button, input[type="number"] {
+      padding: 12px;
+      font-size: 1em;
+      margin: 1em;
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 80%;
+      transition: 0.3s;
+    }
+    button {
+      background-color: #7b1fa2;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #4a148c;
+    }
+    .question-container {
+      background-color: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px 0;
+      width: 100%;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .option {
+      margin: 10px 0;
+      padding: 12px;
+      background-color: #f3e5f5;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .option:hover {
+      background-color: #ce93d8;
+    }
+    #result {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #2e7d32;
+      margin-top: 20px;
+    }
+    #timer {
+      font-size: 1.2em;
+      color: #d84315;
+    }
+    #explanation {
+      margin-top: 10px;
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>LearnCodeHub Quiz App</header>
+
+  <div class="start-screen" id="startScreen">
+    <select id="topicSelect">
+      <option value="">Choose a topic</option>
+      <option value="HTML">HTML</option>
+      <option value="C">C</option>
+      <option value="CPP">C++</option>
+      <option value="Python">Python</option>
+      <option value="JAVA">Java</option>
+      <option value="DSA">DSA</option>
+      <option value="OOSE">OOSE</option>
+      <option value="OS">OS</option>
+      <option value="DBMS">DBMS</option>
+      <option value="ComputerNetworks">ComputerNetworks</option>
+      <option value="reactjs">Reactjs</option>
+      <option value="MachineLearning">MachineLearning</option>
+      <option value="DeepLearning">DeepLearning</option>
+      <option value="DataAnalysis">DataAnalysis</option>
+      <option value="FullStack">FullStack</option>
+      <option value="CyberSecurity">CyberSecurity</option>
+    </select>
+    <input type="number" id="customTimer" placeholder="Enter time per question (sec)" min="5" max="60">
+    <button onclick="startQuiz()">Start Quiz</button>
+    <button onclick="showHistory()">View History</button>
+  </div>
+
+  <div class="quiz-screen" id="quizScreen" style="display:none">
+    <div id="timer"></div>
+    <div class="question-container" id="quizBox">
+      <div id="questionText"></div>
+      <div id="optionsContainer"></div>
+      <div id="explanation"></div>
+    </div>
+    <div id="result"></div>
+  </div>
+
+  <div class="history-screen" id="historyScreen" style="display:none">
+    <h3>Quiz History</h3>
+    <ul id="historyList"></ul>
+    <button onclick="goBack()">Back to Start</button>
+  </div>
+
+  <script>
+    const quizData = {
+  HTML: [
+    {
+      question: "What does HTML stand for?",
+      options: [
+        "Hyper Text Markup Language",
+        "Home Tool Markup Language",
+        "Hyperlinks and Text Markup Language",
+        "Hyperlinking Text Management Language"
+      ],
+      answer: 0,
+      explanation: "HTML stands for Hyper Text Markup Language."
+    },
+    {
+      question: "Who is making the Web standards?",
+      options: [
+        "Google",
+        "Mozilla",
+        "Microsoft",
+        "The World Wide Web Consortium"
+      ],
+      answer: 3,
+      explanation: "W3C (The World Wide Web Consortium) is the main international standards organization for the Web."
+    },
+    {
+      question: "Choose the correct HTML element for the largest heading:",
+      options: ["<heading>", "<h1>", "<head>", "<h6>"],
+      answer: 1,
+      explanation: "<h1> defines the largest heading in HTML."
+    },
+    {
+      question: "What is the correct HTML element for inserting a line break?",
+      options: ["<break>", "<br>", "<lb>", "<newline>"],
+      answer: 1,
+      explanation: "<br> is used for inserting line breaks in HTML."
+    },
+    {
+      question: "Which character is used to indicate an end tag?",
+      options: ["^", "<", "/", "*"],
+      answer: 2,
+      explanation: "The slash (/) is used to indicate end tags in HTML."
+    },
+    {
+      question: "Which HTML element defines the title of a document?",
+      options: ["<meta>", "<title>", "<head>", "<header>"],
+      answer: 1,
+      explanation: "<title> sets the title of the document shown in browser tab."
+    },
+    {
+      question: "How can you make a numbered list?",
+      options: ["<ul>", "<ol>", "<dl>", "<list>"],
+      answer: 1,
+      explanation: "<ol> creates an ordered (numbered) list in HTML."
+    }
+  ],
+
+
+C: [
+  {
+    question: "Which of the following is the correct syntax to declare a variable in C?",
+    options: ["int x;", "x int;", "int = x;", "declare int x;"],
+    answer: 0,
+    explanation: "In C, variables are declared as 'int x;' for an integer."
+  },
+  {
+    question: "What is the output of: printf(\"%d\", 5 + 2 * 3);",
+    options: ["21", "11", "17", "15"],
+    answer: 1,
+    explanation: "2 * 3 is 6; 5 + 6 = 11 due to operator precedence."
+  },
+  {
+    question: "Which header file is required for printf and scanf?",
+    options: ["<conio.h>", "<string.h>", "<stdio.h>", "<stdlib.h>"],
+    answer: 2,
+    explanation: "Functions like printf and scanf are declared in <stdio.h>."
+  },
+  {
+    question: "What is the size of an int in C (on most 32-bit systems)?",
+    options: ["2 bytes", "4 bytes", "8 bytes", "Depends on compiler"],
+    answer: 1,
+    explanation: "On most 32-bit systems, an int is 4 bytes."
+  },
+  {
+    question: "Which of the following is a valid loop in C?",
+    options: ["for (int i=0; i<10; i++)", "loop i=1 to 10", "foreach(i in range)", "repeat(i, 10)"],
+    answer: 0,
+    explanation: "for (int i=0; i<10; i++) is the correct syntax in C."
+  },
+  {
+    question: "Which symbol is used to include a header file?",
+    options: ["@", "#", "%", "&"],
+    answer: 1,
+    explanation: "# is used in directives like #include <stdio.h>."
+  },
+  {
+    question: "What does the 'return' keyword do in C?",
+    options: [
+      "Exits the program",
+      "Skips to the next iteration",
+      "Exits from a function and returns a value",
+      "Repeats the loop"
+    ],
+    answer: 2,
+    explanation: "'return' exits the function and returns a value to the caller."
+  }
+],
+  CPP: [
+  {
+    question: "Which of the following is the correct way to create an object in C++?",
+    options: [
+      "ClassName obj();",
+      "ClassName obj;",
+      "ClassName = obj();",
+      "obj = ClassName();"
+    ],
+    answer: 1,
+    explanation: "In C++, 'ClassName obj;' is the standard way to create an object."
+  },
+  {
+    question: "Which concept allows the use of the same function name with different parameters?",
+    options: ["Inheritance", "Polymorphism", "Function Overloading", "Encapsulation"],
+    answer: 2,
+    explanation: "Function Overloading allows functions with the same name but different parameters."
+  },
+  {
+    question: "What does 'public:' keyword signify in a class?",
+    options: [
+      "Accessible only inside the class",
+      "Accessible by base classes",
+      "Accessible everywhere",
+      "Accessible only in derived classes"
+    ],
+    answer: 2,
+    explanation: "'public:' members are accessible from outside the class."
+  },
+  {
+    question: "Which operator is used to resolve the scope in C++?",
+    options: ["::", ".", "->", ":"],
+    answer: 0,
+    explanation: "The scope resolution operator (::) is used in C++ to define scope."
+  },
+  {
+    question: "Which feature in C++ allows a derived class to inherit members of a base class?",
+    options: ["Abstraction", "Inheritance", "Polymorphism", "Encapsulation"],
+    answer: 1,
+    explanation: "Inheritance allows one class to inherit from another."
+  },
+  {
+    question: "Which of the following is not a valid access specifier in C++?",
+    options: ["public", "private", "protected", "internal"],
+    answer: 3,
+    explanation: "'internal' is not a valid access specifier in C++."
+  },
+  {
+    question: "What is the use of the 'new' keyword in C++?",
+    options: [
+      "To create variables",
+      "To allocate memory dynamically",
+      "To define macros",
+      "To create a namespace"
+    ],
+    answer: 1,
+    explanation: "'new' is used to allocate memory on the heap in C++."
+  }
+],
+
+Python: [
+  {
+    question: "What is the output of: print(type([]))?",
+    options: ["<class 'list'>", "<type 'list'>", "<list>", "list"],
+    answer: 0,
+    explanation: "In Python, type([]) returns <class 'list'>."
+  },
+  {
+    question: "Which keyword is used to create a function in Python?",
+    options: ["func", "def", "function", "lambda"],
+    answer: 1,
+    explanation: "The 'def' keyword is used to define a function."
+  },
+  {
+    question: "What is the result of 3 * 1**3?",
+    options: ["27", "3", "1", "9"],
+    answer: 1,
+    explanation: "1**3 = 1; then 3 * 1 = 3."
+  },
+  {
+    question: "What data type is the object below? \n x = {\"name\": \"John\", \"age\": 30}",
+    options: ["Tuple", "List", "Dictionary", "Set"],
+    answer: 2,
+    explanation: "Curly braces with key-value pairs define a dictionary."
+  },
+  {
+    question: "Which of the following is used to handle exceptions in Python?",
+    options: ["try/except", "do/catch", "exception", "handle/error"],
+    answer: 0,
+    explanation: "Python uses try and except blocks to handle exceptions."
+  },
+  {
+    question: "Which of the following is not a keyword in Python?",
+    options: ["pass", "eval", "assert", "nonlocal"],
+    answer: 1,
+    explanation: "'eval' is a built-in function, not a keyword."
+  },
+  {
+    question: "What is the output of: len(\"Hello\")?",
+    options: ["4", "5", "6", "Error"],
+    answer: 1,
+    explanation: "'Hello' has 5 characters, so len('Hello') is 5."
+  }
+],
+JAVA: [
+  {
+    question: "Which keyword is used to inherit a class in Java?",
+    options: ["this", "super", "extends", "implements"],
+    answer: 2,
+    explanation: "The 'extends' keyword is used to inherit a class in Java."
+  },
+  {
+    question: "Which method is the entry point of a Java program?",
+    options: ["main()", "start()", "run()", "init()"],
+    answer: 0,
+    explanation: "Execution of a Java application starts from the 'main' method."
+  },
+  {
+    question: "Which of these is not a primitive data type in Java?",
+    options: ["int", "boolean", "String", "char"],
+    answer: 2,
+    explanation: "String is a class in Java, not a primitive type."
+  },
+  {
+    question: "What is the size of an int data type in Java?",
+    options: ["4 bytes", "2 bytes", "8 bytes", "Depends on the system"],
+    answer: 0,
+    explanation: "In Java, an int is always 4 bytes regardless of the system."
+  },
+  {
+    question: "Which of these is used to create an object in Java?",
+    options: ["allocate", "new", "create", "object"],
+    answer: 1,
+    explanation: "The 'new' keyword is used to create objects in Java."
+  },
+  {
+    question: "Which keyword is used to prevent inheritance of a class?",
+    options: ["final", "static", "const", "protected"],
+    answer: 0,
+    explanation: "A class declared 'final' cannot be inherited."
+  },
+  {
+    question: "What will be the output of: System.out.println(10 + 20 + \"30\")?",
+    options: ["3030", "102030", "3030.0", "3030.0.0"],
+    answer: 0,
+    explanation: "10 + 20 = 30, then + \"30\" makes it '3030' as a string."
+  }
+],
+DSA: [
+  {
+    question: "Which data structure uses LIFO (Last In First Out) principle?",
+    options: ["Queue", "Stack", "Array", "Linked List"],
+    answer: 1,
+    explanation: "Stack follows LIFO—last inserted element is removed first."
+  },
+  {
+    question: "Which sorting algorithm has the best average case time complexity?",
+    options: ["Bubble Sort", "Selection Sort", "Quick Sort", "Insertion Sort"],
+    answer: 2,
+    explanation: "Quick Sort has an average time complexity of O(n log n)."
+  },
+  {
+    question: "Which data structure is used for implementing recursion?",
+    options: ["Queue", "Stack", "Heap", "Tree"],
+    answer: 1,
+    explanation: "Recursion uses the call stack internally."
+  },
+  {
+    question: "What is the time complexity of searching in a balanced binary search tree?",
+    options: ["O(n)", "O(log n)", "O(n log n)", "O(1)"],
+    answer: 1,
+    explanation: "A balanced BST has a search time of O(log n)."
+  },
+  {
+    question: "Which of the following is not a linear data structure?",
+    options: ["Array", "Linked List", "Binary Tree", "Stack"],
+    answer: 2,
+    explanation: "Binary Tree is a non-linear hierarchical structure."
+  },
+  {
+    question: "Which algorithm is used to find the shortest path in a weighted graph?",
+    options: ["DFS", "BFS", "Prim’s Algorithm", "Dijkstra’s Algorithm"],
+    answer: 3,
+    explanation: "Dijkstra’s algorithm finds the shortest path in weighted graphs."
+  },
+  {
+    question: "In a min-heap, the smallest element is located at:",
+    options: ["Root node", "Leaf node", "Middle level", "Random position"],
+    answer: 0,
+    explanation: "In a min-heap, the smallest element is always at the root."
+  }
+],
+OOSE: [
+  {
+    question: "Which of the following is not a fundamental concept of Object-Oriented Programming?",
+    options: ["Encapsulation", "Polymorphism", "Abstraction", "Compilation"],
+    answer: 3,
+    explanation: "Compilation is not a concept of OOP; it's a process."
+  },
+  {
+    question: "What does UML stand for?",
+    options: ["Unified Modeling Language", "Universal Markup Language", "Unique Modeling Logic", "Unified Machine Learning"],
+    answer: 0,
+    explanation: "UML stands for Unified Modeling Language used for designing systems."
+  },
+  {
+    question: "Which diagram shows object interactions in a time sequence?",
+    options: ["Class Diagram", "Use Case Diagram", "Sequence Diagram", "Activity Diagram"],
+    answer: 2,
+    explanation: "Sequence diagrams show the time-ordered flow of messages between objects."
+  },
+  {
+    question: "In OOP, what binds data and the functions that manipulate it?",
+    options: ["Polymorphism", "Encapsulation", "Inheritance", "Abstraction"],
+    answer: 1,
+    explanation: "Encapsulation binds data and methods together."
+  },
+  {
+    question: "Which principle supports the idea of ‘one interface, multiple methods’?",
+    options: ["Inheritance", "Encapsulation", "Polymorphism", "Abstraction"],
+    answer: 2,
+    explanation: "Polymorphism allows methods to perform different tasks based on the object."
+  },
+  {
+    question: "Which model emphasizes iterative and incremental development?",
+    options: ["Waterfall", "Spiral", "V-Model", "Big Bang"],
+    answer: 1,
+    explanation: "The Spiral model uses iterations and prototypes for development."
+  },
+  {
+    question: "What is the purpose of use case diagrams?",
+    options: ["Define software classes", "Depict database structure", "Capture functional requirements", "Model system performance"],
+    answer: 2,
+    explanation: "Use case diagrams capture user interactions and system functions."
+  }
+],
+    OS: [
+  {
+    question: "Which of the following is not a function of an operating system?",
+    options: ["Memory management", "Compiler design", "File management", "Process scheduling"],
+    answer: 1,
+    explanation: "Compiler design is part of programming languages, not the OS."
+  },
+  {
+    question: "Which of these is a type of OS that allows multiple users to access a computer system simultaneously?",
+    options: ["Real-time OS", "Multi-user OS", "Single-tasking OS", "Distributed OS"],
+    answer: 1,
+    explanation: "Multi-user OS supports multiple users simultaneously."
+  },
+  {
+    question: "What is a deadlock?",
+    options: [
+      "A memory leak",
+      "A situation where processes wait indefinitely for resources",
+      "A failure in secondary storage",
+      "A type of system call"
+    ],
+    answer: 1,
+    explanation: "Deadlock is when processes wait forever for each other’s resources."
+  },
+  {
+    question: "Which of the following is a non-preemptive scheduling algorithm?",
+    options: ["Round Robin", "Priority", "FCFS", "Shortest Remaining Time First"],
+    answer: 2,
+    explanation: "First-Come-First-Served (FCFS) is a non-preemptive scheduling method."
+  },
+  {
+    question: "Which memory management technique divides memory into fixed-sized blocks?",
+    options: ["Segmentation", "Paging", "Swapping", "Thrashing"],
+    answer: 1,
+    explanation: "Paging divides memory into fixed-size pages and frames."
+  },
+  {
+    question: "Which part of the OS loads first at startup?",
+    options: ["Command line", "Shell", "Kernel", "Driver"],
+    answer: 2,
+    explanation: "The kernel is the first to load and controls the rest of the OS."
+  },
+  {
+    question: "What is the primary purpose of an interrupt in an OS?",
+    options: [
+      "To allow the processor to perform tasks slowly",
+      "To provide delays",
+      "To stop memory leaks",
+      "To handle asynchronous events"
+    ],
+    answer: 3,
+    explanation: "Interrupts handle external or internal asynchronous events."
+  }
+],
+
+DBMS: [
+  {
+    question: "What does DBMS stand for?",
+    options: ["Database Management System", "Data Backup Management Software", "Digital Base Mapping Software", "Database Migration Solution"],
+    answer: 0,
+    explanation: "DBMS = Database Management System."
+  },
+  {
+    question: "Which language is used to define the structure of a database?",
+    options: ["DML", "DDL", "DCL", "SQL"],
+    answer: 1,
+    explanation: "DDL (Data Definition Language) is used for defining schema."
+  },
+  {
+    question: "Which key uniquely identifies each record in a table?",
+    options: ["Foreign key", "Candidate key", "Primary key", "Alternate key"],
+    answer: 2,
+    explanation: "Primary key uniquely identifies each row."
+  },
+  {
+    question: "Which of the following is a property of a transaction?",
+    options: ["CRUD", "CAP", "ACID", "BASE"],
+    answer: 2,
+    explanation: "ACID (Atomicity, Consistency, Isolation, Durability) ensures reliability."
+  },
+  {
+    question: "Which command is used to remove all rows from a table?",
+    options: ["DELETE", "REMOVE", "DROP", "TRUNCATE"],
+    answer: 3,
+    explanation: "TRUNCATE removes all rows efficiently."
+  },
+  {
+    question: "Which normal form removes partial dependency?",
+    options: ["1NF", "2NF", "3NF", "BCNF"],
+    answer: 1,
+    explanation: "2NF removes partial dependency."
+  },
+  {
+    question: "Which of the following is used to access or manipulate data in a database?",
+    options: ["DML", "DDL", "HTML", "XML"],
+    answer: 0,
+    explanation: "DML (Data Manipulation Language) is used for data queries."
+  }
+],
+
+computerNetworks: [
+  {
+    question: "What does IP stand for?",
+    options: ["Internet Protocol", "Internal Protocol", "Input Protocol", "Intranet Process"],
+    answer: 0,
+    explanation: "IP = Internet Protocol, used in routing data."
+  },
+  {
+    question: "Which of the following is a Layer 2 device?",
+    options: ["Router", "Switch", "Hub", "Modem"],
+    answer: 1,
+    explanation: "Switches operate at the Data Link Layer (Layer 2)."
+  },
+  {
+    question: "Which topology has a central hub?",
+    options: ["Ring", "Mesh", "Bus", "Star"],
+    answer: 3,
+    explanation: "Star topology has all nodes connected to a central hub."
+  },
+  {
+    question: "Which protocol is used to send emails?",
+    options: ["SMTP", "FTP", "HTTP", "TCP"],
+    answer: 0,
+    explanation: "SMTP (Simple Mail Transfer Protocol) is used for email delivery."
+  },
+  {
+    question: "What is the default port number for HTTP?",
+    options: ["21", "23", "80", "443"],
+    answer: 2,
+    explanation: "HTTP uses port 80 by default."
+  },
+  {
+    question: "Which device separates two networks?",
+    options: ["Switch", "Hub", "Bridge", "Router"],
+    answer: 3,
+    explanation: "Routers connect and separate networks."
+  },
+  {
+    question: "What does DNS stand for?",
+    options: ["Digital Network System", "Domain Name System", "Data Name Server", "Dynamic Network Structure"],
+    answer: 1,
+    explanation: "DNS translates domain names into IP addresses."
+  }
+],
+
+reactjs: [
+  {
+    question: "What is JSX?",
+    options: ["A JavaScript XML syntax extension", "A JSON parser", "A JavaScript compiler", "A library"],
+    answer: 0,
+    explanation: "JSX allows writing HTML in JavaScript."
+  },
+  {
+    question: "Which hook is used for state in functional components?",
+    options: ["useEffect", "useReducer", "useState", "useContext"],
+    answer: 2,
+    explanation: "useState manages local state in functional components."
+  },
+  {
+    question: "React is maintained by?",
+    options: ["Microsoft", "Facebook", "Google", "Twitter"],
+    answer: 1,
+    explanation: "Facebook maintains React."
+  },
+  {
+    question: "Which method is used to update state in class components?",
+    options: ["update()", "setState()", "useState()", "this.state()"],
+    answer: 1,
+    explanation: "`setState()` updates state in class components."
+  },
+  {
+    question: "Which hook is used for side effects?",
+    options: ["useState", "useEffect", "useContext", "useRef"],
+    answer: 1,
+    explanation: "useEffect is used for handling side effects."
+  },
+  {
+    question: "What is the virtual DOM?",
+    options: ["Real browser DOM", "DOM created by React", "A browser plugin", "None"],
+    answer: 1,
+    explanation: "React uses a virtual DOM to optimize rendering."
+  },
+  {
+    question: "Props in React are?",
+    options: ["Mutable", "Immutable", "Optional", "Unused"],
+    answer: 1,
+    explanation: "Props are read-only and cannot be modified."
+  }
+],
+
+MachineLearning: [
+  {
+    question: "Which of the following is a type of machine learning?",
+    options: ["Supervised", "Unsupervised", "Reinforcement", "All of the above"],
+    answer: 3,
+    explanation: "ML has all three types."
+  },
+  {
+    question: "Which algorithm is used for classification?",
+    options: ["Linear Regression", "Logistic Regression", "K-means", "PCA"],
+    answer: 1,
+    explanation: "Logistic Regression is used for classification tasks."
+  },
+  {
+    question: "What is overfitting?",
+    options: ["Model performs well on training and test", "Model performs poorly", "Model memorizes training data", "None"],
+    answer: 2,
+    explanation: "Overfitting is when the model memorizes data and fails on new data."
+  },
+  {
+    question: "Which of the following is used to reduce dimensions?",
+    options: ["PCA", "Logistic Regression", "KNN", "SVM"],
+    answer: 0,
+    explanation: "PCA (Principal Component Analysis) reduces dimensions."
+  },
+  {
+    question: "What is the full form of SVM?",
+    options: ["Simple Vector Model", "Support Vector Machine", "Standard Vector Module", "Support Vector Mapping"],
+    answer: 1,
+    explanation: "SVM is a popular classification technique."
+  },
+  {
+    question: "Which of the following is a model evaluation metric?",
+    options: ["Confusion Matrix", "Confusion List", "Classification Table", "Prediction Matrix"],
+    answer: 0,
+    explanation: "Confusion Matrix evaluates classification performance."
+  },
+  {
+    question: "What is the role of the learning rate in gradient descent?",
+    options: ["Speed up training", "Control step size", "Reduce bias", "None"],
+    answer: 1,
+    explanation: "Learning rate controls how big the weight update step is."
+  }
+],
+DeepLearning: [
+  {
+    question: "Which of the following is a type of neural network?",
+    options: ["CNN", "RNN", "GAN", "All of the above"],
+    answer: 3,
+    explanation: "CNN, RNN, and GAN are all types of neural networks in Deep Learning."
+  },
+  {
+    question: "What does a convolution layer do in CNN?",
+    options: ["Reduces overfitting", "Extracts features", "Performs classification", "Normalizes data"],
+    answer: 1,
+    explanation: "Convolution layers extract spatial features from input images."
+  },
+  {
+    question: "Which function is commonly used as an activation function?",
+    options: ["ReLU", "Log", "Exp", "Mean"],
+    answer: 0,
+    explanation: "ReLU (Rectified Linear Unit) is widely used in deep neural networks."
+  },
+  {
+    question: "What is backpropagation used for?",
+    options: ["Initializing weights", "Forward pass", "Training by adjusting weights", "Removing layers"],
+    answer: 2,
+    explanation: "Backpropagation updates weights by calculating gradients."
+  },
+  {
+    question: "Which of the following is a challenge in deep learning?",
+    options: ["Overfitting", "Large data requirement", "High computational cost", "All of the above"],
+    answer: 3,
+    explanation: "All listed are common challenges in deep learning."
+  },
+  {
+    question: "What is dropout in neural networks?",
+    options: ["Removing layers", "Randomly disabling neurons", "Increasing learning rate", "Reducing dimensions"],
+    answer: 1,
+    explanation: "Dropout is used to prevent overfitting by randomly disabling neurons during training."
+  },
+  {
+    question: "Which framework is commonly used in deep learning?",
+    options: ["TensorFlow", "NumPy", "Scikit-learn", "Matplotlib"],
+    answer: 0,
+    explanation: "TensorFlow is a powerful deep learning library by Google."
+  }
+],
+
+DataAnalysis: [
+  {
+    question: "What is data cleaning?",
+    options: ["Removing all data", "Correcting or removing incorrect data", "Formatting data", "Analyzing results"],
+    answer: 1,
+    explanation: "Data cleaning involves fixing or removing incorrect/incomplete data."
+  },
+  {
+    question: "Which of the following library is used for data analysis in Python?",
+    options: ["NumPy", "Pandas", "Matplotlib", "Seaborn"],
+    answer: 1,
+    explanation: "Pandas is widely used for data analysis tasks."
+  },
+  {
+    question: "What is a DataFrame?",
+    options: ["A chart", "A data cleaning tool", "A 2D labeled data structure", "A machine learning algorithm"],
+    answer: 2,
+    explanation: "DataFrame is a 2D labeled structure used in pandas."
+  },
+  {
+    question: "Which function is used to check missing data in pandas?",
+    options: ["isnull()", "dropna()", "fillna()", "null()"],
+    answer: 0,
+    explanation: "`isnull()` checks for missing data."
+  },
+  {
+    question: "What is the purpose of data visualization?",
+    options: ["Hiding data", "Cleaning data", "Presenting data graphically", "Encrypting data"],
+    answer: 2,
+    explanation: "Data visualization helps present data in a clear graphical form."
+  },
+  {
+    question: "What is EDA in data analysis?",
+    options: ["Extra Data Analysis", "Exploratory Data Analysis", "Exclusive Data Analytics", "Extensive Dataset Analysis"],
+    answer: 1,
+    explanation: "EDA stands for Exploratory Data Analysis."
+  },
+  {
+    question: "Which of the following is used to plot graphs in Python?",
+    options: ["Matplotlib", "Scikit-learn", "Pandas", "TensorFlow"],
+    answer: 0,
+    explanation: "Matplotlib is used for creating static, animated, and interactive plots."
+  }
+],
+
+FullStack: [
+  {
+    question: "What does full stack development include?",
+    options: ["Frontend", "Backend", "Database", "All of the above"],
+    answer: 3,
+    explanation: "Full stack involves frontend, backend, and database development."
+  },
+  {
+    question: "Which language is commonly used for backend?",
+    options: ["HTML", "CSS", "JavaScript", "Node.js"],
+    answer: 3,
+    explanation: "Node.js is a popular JavaScript runtime for backend."
+  },
+  {
+    question: "Which of these is a frontend framework?",
+    options: ["React", "Django", "Flask", "MongoDB"],
+    answer: 0,
+    explanation: "React is a frontend JavaScript library."
+  },
+  {
+    question: "What is the role of Express.js?",
+    options: ["Frontend framework", "Database", "Backend web framework", "Authentication tool"],
+    answer: 2,
+    explanation: "Express.js is a backend framework for Node.js."
+  },
+  {
+    question: "Which of the following is a NoSQL database?",
+    options: ["MySQL", "PostgreSQL", "MongoDB", "SQLite"],
+    answer: 2,
+    explanation: "MongoDB is a NoSQL database."
+  },
+  {
+    question: "Which protocol is used to fetch data from backend?",
+    options: ["SMTP", "FTP", "HTTP", "IP"],
+    answer: 2,
+    explanation: "HTTP is the protocol used for web communication."
+  },
+  {
+    question: "What does CRUD stand for?",
+    options: ["Create, Read, Update, Delete", "Compute, Read, Undo, Delete", "Create, Run, Upload, Download", "None"],
+    answer: 0,
+    explanation: "CRUD represents the four basic operations of persistent storage."
+  }
+],
+
+CyberSecurity: [
+  {
+    question: "What is the main goal of cybersecurity?",
+    options: ["Designing software", "Data analysis", "Protecting data and systems", "Creating websites"],
+    answer: 2,
+    explanation: "Cybersecurity focuses on protecting systems and data."
+  },
+  {
+    question: "Which of the following is a type of malware?",
+    options: ["Firewall", "Virus", "Antivirus", "Encryption"],
+    answer: 1,
+    explanation: "Virus is a type of malicious software."
+  },
+  {
+    question: "What is phishing?",
+    options: ["An attack on servers", "Gaining access via malware", "Tricking users to reveal sensitive info", "Encrypting data"],
+    answer: 2,
+    explanation: "Phishing tricks users into revealing sensitive data like passwords."
+  },
+  {
+    question: "Which protocol is secure for website browsing?",
+    options: ["HTTP", "FTP", "HTTPS", "IP"],
+    answer: 2,
+    explanation: "HTTPS is the secure version of HTTP using encryption."
+  },
+  {
+    question: "What is the function of a firewall?",
+    options: ["Encrypt files", "Block malware", "Control incoming and outgoing traffic", "Monitor CPU"],
+    answer: 2,
+    explanation: "Firewalls monitor and filter network traffic."
+  },
+  {
+    question: "What is a brute force attack?",
+    options: ["Guessing passwords systematically", "Sending viruses", "Phishing emails", "Modifying websites"],
+    answer: 0,
+    explanation: "Brute force attacks attempt all possible passwords."
+  },
+  {
+    question: "What is two-factor authentication?",
+    options: ["Two people logging in", "Using username twice", "Adding second verification step", "Typing password twice"],
+    answer: 2,
+    explanation: "2FA adds an extra layer of security through another verification method."
+  }
+]
+    };
+    let currentQuestion = 0;
+    let score = 0;
+    let currentTopic = "";
+    let timer;
+    let timeLeft = 15;
+    let history = [];
+
+    function startQuiz() {
+      currentTopic = document.getElementById('topicSelect').value;
+      const customTime = parseInt(document.getElementById('customTimer').value);
+      timeLeft = (customTime >= 5 && customTime <= 60) ? customTime : 15;
+      if (!currentTopic || !quizData[currentTopic]) {
+        alert("Please choose a valid topic.");
+        return;
+      }
+      currentQuestion = 0;
+      score = 0;
+      history = [];
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('historyScreen').style.display = 'none';
+      document.getElementById('quizScreen').style.display = 'flex';
+      shuffle(quizData[currentTopic]);
+      loadQuestion();
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    function loadQuestion() {
+      const data = quizData[currentTopic];
+      if (currentQuestion >= data.length) {
+        document.getElementById('quizBox').style.display = 'none';
+        document.getElementById('timer').style.display = 'none';
+        document.getElementById('result').innerText = `You scored ${score} out of ${data.length}`;
+        let allHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+        allHistory.push({ topic: currentTopic, score: score, total: data.length, date: new Date().toLocaleString() });
+        localStorage.setItem("quizHistory", JSON.stringify(allHistory));
+        return;
+      }
+      document.getElementById('quizBox').style.display = 'block';
+      document.getElementById('result').innerText = "";
+      document.getElementById('questionText').innerText = data[currentQuestion].question;
+      document.getElementById('explanation').innerText = "";
+
+      const optionsContainer = document.getElementById('optionsContainer');
+      optionsContainer.innerHTML = "";
+      data[currentQuestion].options.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerText = opt;
+        div.onclick = () => checkAnswer(idx);
+        optionsContainer.appendChild(div);
+      });
+      resetTimer();
+    }
+
+    function resetTimer() {
+      clearInterval(timer);
+      let time = timeLeft;
+      document.getElementById('timer').innerText = `Time left: ${time}s`;
+      timer = setInterval(() => {
+        time--;
+        document.getElementById('timer').innerText = `Time left: ${time}s`;
+        if (time <= 0) {
+          clearInterval(timer);
+          checkAnswer(-1);
+        }
+      }, 1000);
+    }
+
+    function checkAnswer(selected) {
+      clearInterval(timer);
+      const qData = quizData[currentTopic][currentQuestion];
+      const correct = qData.answer;
+      if (selected === correct) score++;
+      history.push({ question: qData.question, selected, correct, explanation: qData.explanation });
+      document.getElementById('explanation').innerText = qData.explanation;
+      currentQuestion++;
+      setTimeout(loadQuestion, 2000);
+    }
+
+    function showHistory() {
+      document.getElementById('startScreen').style.display = 'none';
+      document.getElementById('quizScreen').style.display = 'none';
+      document.getElementById('historyScreen').style.display = 'flex';
+      const historyList = document.getElementById('historyList');
+      historyList.innerHTML = "";
+      const allHistory = JSON.parse(localStorage.getItem("quizHistory")) || [];
+      allHistory.forEach(item => {
+        const li = document.createElement('li');
+        li.innerText = `${item.date} - ${item.topic.toUpperCase()}: ${item.score}/${item.total}`;
+        historyList.appendChild(li);
+      });
+    }
+
+    function goBack() {
+      document.getElementById('startScreen').style.display = 'flex';
+      document.getElementById('historyScreen').style.display = 'none';
+    }
+  </script>
+</body>
+</html>  
