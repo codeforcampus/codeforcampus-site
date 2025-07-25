@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Module 1: Introduction to DSA</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    .header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      position: relative;
+    }
+
+    #menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      cursor: pointer;
+    }
+
+    .layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #3498db;
+      padding: 2rem 1rem;
+      color: white;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar h3 {
+      margin-top: 0;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin: 0.5rem 0;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      padding: 0.4rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .sidebar a:hover {
+      background-color: #2980b9;
+    }
+
+    .sidebar ul ul {
+      padding-left: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
+    }
+
+    h2 {
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      color: #2c3e50;
+      margin-top: 2rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #ecf0f1;
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Sidebar Toggle */
+    @media (max-width: 768px) {
+      #menu-toggle {
+        display: block;
+      }
+
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        height: calc(100% - 60px);
+        width: 250px;
+        transform: translateX(-100%);
+        z-index: 1000;
+        box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .main-content {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <button id="menu-toggle"onclick="toggleSidebar()">☰</button>
+    <h1>DATA STRUCTURE & ALGORITHMS</h1>
+  </div>
+
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <h3>Modules</h3>
+      <ul>
+        <li>
+          <a href="#" onclick="toggleMenu('m1')">1. Introduction to DSA ▾</a><a href="datastructure_introduction.html">View Course</a>
+          <ul id="m1" style="display: none;">
+            <li><a href="#lesson1-1">1.1 What is DSA?</a></li>
+            <li><a href="#lesson1-2">1.2 Time & Space Complexity</a></li>
+            <li><a href="#lesson1-3">1.3 Programming Tools</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleMenu('m2')">2. Basic Data Structures ▾</a><a href="basic_datastructure.html">View Course</a>
+          <ul id="m2" style="display: none;">
+            <li><a href="#">2.1 Arrays & Strings</a></li>
+            <li><a href="#">2.2 Linked Lists</a></li>
+            <li><a href="#">2.3 Stacks & Queues</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleMenu('m3')">3. Trees ▾</a><a href="trees.html">View Course</a>
+          <ul id="m3" style="display: none;">
+            <li><a href="#">3.1 Binary Trees</a></li>
+            <li><a href="#">3.2 BST Operations</a></li>
+            <li><a href="#">3.3 Heaps</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleMenu('m4')">4. Graphs ▾</a><a href="graph.html">View Course</a>
+          <ul id="m4" style="display: none;">
+            <li><a href="#">4.1 Graph Basics</a></li>
+            <li><a href="#">4.2 BFS & DFS</a></li>
+            <li><a href="#">4.3 Shortest Paths</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleMenu('m5')">5. Sorting & Searching ▾</a><a href="sorting&searching.html">View Course</a>
+          <ul id="m5" style="display: none;">
+            <li><a href="#">5.1 Linear & Binary Search</a></li>
+            <li><a href="#">5.2 Merge & Quick Sort</a></li>
+            <li><a href="#">5.3 Heap & Radix Sort</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleMenu('m6')">6. Recursion & Backtracking ▾</a><a href="recursion&backtracking.html">View Course</a>
+          <ul id="m6" style="display: none;">
+            <li><a href="#">6.1 Recursion Basics</a></li>
+            <li><a href="#">6.2 Backtracking Problems</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleMenu('m7')">7. Dynamic Programming ▾</a><a href="dynamicprogramming.html">View Course</a>
+          <ul id="m7" style="display: none;">
+            <li><a href="#">7.1 Memoization</a></li>
+            <li><a href="#">7.2 Tabulation</a></li>
+            <li><a href="#">7.3 Classic DP Problems</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleMenu('m8')">8. Greedy Algorithms ▾</a><a href="greedyalgorithm.html">View Course</a>
+          <ul id="m8" style="display: none;">
+            <li><a href="#">8.1 Activity Selection</a></li>
+            <li><a href="#">8.2 Huffman Coding</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" onclick="toggleMenu('m9')">9. Real-World Practice ▾</a><a href="real-worldpratices.html">View Course</a>
+          <ul id="m9" style="display: none;">
+            <li><a href="#">9.1 Patterns & Heuristics</a></li>
+            <li><a href="#">9.2 Tries & DSU</a></li>
+            <li><a href="#">9.3 Interview Prep</a></li>
+          </ul>
+        </li>
+      </ul>
+    </aside>
+
+   
+      
+
+  
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+
+    function toggleMenu(id) {
+      const submenu = document.getElementById(id);
+      submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+    }
+  </script>
+</body>
+</html>
+<style>
+  .main-content {
+    padding: 2rem;
+    background: linear-gradient(145deg, #ffffff, #f1f5ff);
+    color: #2c3e50;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .main-content h2 {
+    color: #2980b9;
+    border-left: 5px solid #3498db;
+    padding-left: 1rem;
+    font-size: 2rem;
+  }
+
+  .main-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .main-content ul {
+    background-color: #eef6ff;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    list-style: square;
+    line-height: 1.6;
+    margin: 1rem 0;
+  }
+
+  .main-content ul li::marker {
+    color: #3498db;
+  }
+
+  .note {
+    background-color: #fff9c4;
+    padding: 1rem;
+    border-left: 5px solid #fbc02d;
+    border-radius: 8px;
+    margin-top: 2rem;
+    font-size: 1rem;
+  }
+</style>
+
+<main class="main-content">
+  <h2>Welcome to the DSA Mastery Course</h2>
+  <p><strong>Data Structures and Algorithms (DSA)</strong> are the pillars of modern computing. Whether you're building a mobile app, designing backend systems, or preparing for coding interviews, understanding DSA is a must. This course is designed to take you from fundamentals to advanced techniques with real-world applications and hands-on code examples.</p>
+
+  <p>This DSA course has been curated by top educators and software engineers, inspired by foundational work from legends such as <strong>Donald Knuth</strong> (author of "The Art of Computer Programming") and <strong>Robert Tarjan</strong> (renowned for graph theory and data structures). Its content is continually updated to reflect modern use cases and is widely recognized in academic and industry circles.</p>
+
+  <p>📅 <strong>History & Updates:</strong></p>
+  <ul>
+    <li>First introduced in the 1970s with core principles defined by early computer scientists.</li>
+    <li>Major updates in the 1990s and 2010s to include object-oriented programming and web-based data processing.</li>
+    <li>Continuously evolving with machine learning, real-time systems, and large-scale data processing.</li>
+  </ul>
+
+  <p>🎯 <strong>What You'll Learn:</strong> This course will guide you through core data structures, algorithmic paradigms, optimization techniques, and interview prep — all packed with visuals, examples, and interactive editors to test your skills in real time.</p>
+
+  <div class="note">
+    🧠 <strong>Tip:</strong> Bookmark this course and practice consistently — mastering DSA can significantly boost your confidence and career potential.
+  </div>
+</main>
+</div>
+
+<footer class="footer">
+  © 2025 DSA Mastery Course | All rights reserved.
+</footer>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+  }
+
+  function toggleMenu(id) {
+    const submenu = document.getElementById(id);
+    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+  }
+</script>
+</body>
+</html>

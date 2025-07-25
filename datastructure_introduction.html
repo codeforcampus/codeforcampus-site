@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Module 1: Introduction to DSA</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 2rem;
+    }
+
+    .lesson-section {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .lesson-section h2 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      border-left: 5px solid #3498db;
+      padding-left: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-section h4 {
+      font-size: 1.2rem;
+      color: #1a237e;
+      margin-top: 1.5rem;
+    }
+
+    .lesson-section ul {
+      margin-left: 1rem;
+      padding-left: 1rem;
+    }
+
+    .lesson-section li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .note {
+      background-color: #fff9c4;
+      border-left: 5px solid #fbc02d;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 6px;
+      color: #333;
+    }
+
+    .quick-check {
+      background-color: #e3f2fd;
+      padding: 1rem;
+      border-left: 5px solid #2196f3;
+      border-radius: 6px;
+      margin-top: 1.5rem;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Module 1: Introduction to DSA</h1>
+
+    <div class="nav-buttons">
+      <a class="btn" href="#lesson1-1">Lesson 1.1</a>
+      <a class="btn" href="#lesson1-2">Lesson 1.2</a>
+      <a class="btn" href="#lesson1-3">Lesson 1.3</a>
+    </div>
+
+    <!-- Lesson 1.1 -->
+    <div class="lesson-section" id="lesson1-1">
+      <!-- Lesson 1.1 -->
+<div class="lesson-section">
+  <h2 id="lesson1-1">Lesson 1.1: What is DSA?</h2>
+  <p><strong>DSA (Data Structures and Algorithms)</strong> is the brain of computer science. It's what gives software the ability to process, store, retrieve, and manipulate data efficiently.</p>
+
+  <h4>📦 What are Data Structures?</h4>
+  <p>They are methods of organizing and storing data so operations like search, insert, delete, and update can be performed efficiently.</p>
+  <ul>
+    <li>🔢 <strong>Arrays:</strong> Contiguous memory, fast access by index</li>
+    <li>🔗 <strong>Linked Lists:</strong> Dynamic memory, efficient insertion/deletion</li>
+    <li>🌳 <strong>Trees:</strong> Hierarchical data models (like file systems)</li>
+    <li>🌐 <strong>Graphs:</strong> Represent networks, relationships, maps</li>
+    <li>🧩 <strong>Hash Tables:</strong> Key-value access, used in dictionaries</li>
+  </ul>
+
+  <h4>🔄 What are Algorithms?</h4>
+  <p>Algorithms are defined steps to solve a specific problem — think of them as the "recipes" of computing.</p>
+  <ul>
+    <li>🔍 Searching (e.g., binary search)</li>
+    <li>🎲 Sorting (e.g., quick sort, merge sort)</li>
+    <li>🧠 Dynamic Programming (e.g., Fibonacci, knapsack)</li>
+    <li>⛓️ Backtracking (e.g., N-Queens, maze paths)</li>
+    <li>📈 Greedy Techniques (e.g., coin change, scheduling)</li>
+  </ul>
+
+  <h4>📌 Why Is DSA Important?</h4>
+  <ul>
+    <li>🧠 Helps you think logically and solve real problems</li>
+    <li>⚡ Makes code faster and more efficient</li>
+    <li>💼 Essential for cracking coding interviews</li>
+    <li>🔬 Core of AI, machine learning, and system design</li>
+  </ul>
+
+  <h4>🧑‍🏫 Who Pioneered DSA?</h4>
+  <ul>
+    <li><strong>Al-Khwarizmi</strong> (9th century) — father of algorithms</li>
+    <li><strong>Alan Turing</strong> — formalized computation and logic</li>
+    <li><strong>Donald Knuth</strong> — author of "The Art of Computer Programming"</li>
+  </ul>
+
+  <div class="note">
+    💡 <strong>Fun Fact:</strong> Your favorite social media platform uses graphs to recommend friends and content!
+  </div>
+
+  <div class="quick-check">
+    <h4>🧪 Quick Check</h4>
+    <ul>
+      <li>✅ What’s the difference between a data structure and an algorithm?</li>
+      <li>✅ Which data structure is best for representing a map or network?</li>
+    </ul>
+  </div>
+
+  <div class="lesson-section" style="background-color: #e8f5e9; border-left: 6px solid #43a047;">
+    <h3>🔑 Key Takeaways (Lesson 1.1)</h3>
+    <ul>
+      <li>DSA = Data Structures + Algorithms.</li>
+      <li>Data Structures manage data, Algorithms solve problems.</li>
+      <li>Used in real-world software like maps, games, and apps.</li>
+      <li>Core to interview prep and computer science fundamentals.</li>
+      <li>Mastering DSA improves speed, clarity, and efficiency in code.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Lesson 1.2 -->
+<div class="lesson-section">
+  <h2 id="lesson1-2">Lesson 1.2: Time & Space Complexity</h2>
+  <p>How do we measure how good an algorithm is? Two words: <strong>Time</strong> and <strong>Space</strong>.</p>
+
+  <h4>⏱️ Time Complexity</h4>
+  <p>Describes how the execution time grows with input size. It’s about speed.</p>
+  <ul>
+    <li><strong>O(1)</strong> — Constant time</li>
+    <li><strong>O(n)</strong> — Linear time</li>
+    <li><strong>O(log n)</strong> — Logarithmic time</li>
+    <li><strong>O(n²)</strong> — Quadratic time</li>
+  </ul>
+
+  <h4>📦 Space Complexity</h4>
+  <p>Describes how much memory the algorithm uses while running.</p>
+  <ul>
+    <li>Extra arrays, recursive calls impact space usage</li>
+    <li>Ideal algorithms are optimized for both space and time</li>
+  </ul>
+
+  <h4>⚙️ Example: Binary Search</h4>
+  <div class="code-block">
+function binarySearch(arr, target) {
+  let left = 0, right = arr.length - 1;
+  while (left <= right) {
+    let mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) return mid;
+    if (arr[mid] < target) left = mid + 1;
+    else right = mid - 1;
+  }
+  return -1;
+}
+  </div>
+  <p>This algorithm cuts the array in half each time → <strong>O(log n)</strong></p>
+
+  <h4>📊 Visual Analogy</h4>
+  <ul>
+    <li>📚 Searching 100 books one by one = O(n)</li>
+    <li>📖 Using a sorted index = O(log n)</li>
+    <li>🎯 Knowing the exact page = O(1)</li>
+  </ul>
+
+  <div class="note">
+    🔁 <strong>Trade-off:</strong> Faster code may use more memory — balance is key!
+  </div>
+
+  <div class="quick-check">
+    <h4>🧪 Quick Check</h4>
+    <ul>
+      <li>✅ What is the time complexity of a nested loop?</li>
+      <li>✅ When would you prefer O(n log n) over O(n²)?</li>
+    </ul>
+  </div>
+
+  <div class="lesson-section" style="background-color: #e8f5e9; border-left: 6px solid #43a047;">
+    <h3>🔑 Key Takeaways (Lesson 1.2)</h3>
+    <ul>
+      <li>Time complexity → execution speed; Space complexity → memory usage.</li>
+      <li>Big-O notation is used to express performance.</li>
+      <li>O(log n) is faster than O(n), especially for large data.</li>
+      <li>Choose the most optimal algorithm for your constraints.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Lesson 1.3 -->
+<div class="lesson-section">
+  <h2 id="lesson1-3">Lesson 1.3: Programming Language Tools</h2>
+  <p>To implement DSA concepts, you need to know basic programming constructs that support them. Here's what matters most:</p>
+
+  <h4>🔢 Arrays</h4>
+  <p>Arrays are collections of elements stored in a continuous block of memory. They allow:</p>
+  <ul>
+    <li>⚡ Fast access via index (O(1))</li>
+    <li>📏 Fixed size after creation</li>
+  </ul>
+  <div class="code-block">
+let arr = [10, 20, 30];
+console.log(arr[1]); // Output: 20
+  </div>
+
+  <h4>📌 Pointers (C/C++)</h4>
+  <p>Pointers store memory addresses — essential for building linked lists, trees, etc.</p>
+  <div class="code-block">
+int a = 42;
+int *p = &a;
+printf("%d", *p); // Output: 42
+  </div>
+
+  <h4>🧱 Classes (Object-Oriented Programming)</h4>
+  <p>Used to model real-world entities and group data + behavior.</p>
+  <div class="code-block">
+class Student {
+  constructor(name) {
+    this.name = name;
+  }
+}
+const s1 = new Student("Alice");
+console.log(s1.name); // Output: Alice
+  </div>
+
+  <h4>🌐 Common Tools by Language</h4>
+  <table style="width: 100%; border-collapse: collapse;">
+    <tr style="background-color: #e3f2fd;">
+      <th style="text-align: left; padding: 8px;">Language</th>
+      <th style="text-align: left; padding: 8px;">Tools</th>
+    </tr>
+    <tr>
+      <td style="padding: 8px;">C++</td>
+      <td style="padding: 8px;">Pointers, STL (Vectors, Maps), Classes</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;">Java</td>
+      <td style="padding: 8px;">Objects, Arrays, Collections (List, Map)</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;">Python</td>
+      <td style="padding: 8px;">Lists, Dictionaries, Classes</td>
+    </tr>
+  </table>
+
+  <div class="note">
+    🧠 <strong>Tip:</strong> Choose the language that feels comfortable — DSA logic stays the same across languages.
+  </div>
+
+  <div class="quick-check">
+    <h4>🧪 Quick Check</h4>
+    <ul>
+      <li>✅ When do you use pointers?</li>
+      <li>✅ What’s the difference between an array and a list?</li>
+    </ul>
+  </div>
+
+  <div class="lesson-section" style="background-color: #e8f5e9; border-left: 6px solid #43a047;">
+    <h3>🔑 Key Takeaways (Lesson 1.3)</h3>
+    <ul>
+      <li>Arrays and lists are foundational tools for DSA.</li>
+      <li>Pointers are powerful in low-level memory control (C/C++).</li>
+      <li>OOP and classes help structure DSA problems cleanly.</li>
+      <li>DSA can be learned in any language — choose your favorite!</li>
+    </ul>
+  </div>
+</div>

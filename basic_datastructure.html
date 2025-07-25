@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 2: Basic Data Structures</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    h4 {
+      color: #2c3e50;
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    .note {
+      background-color: #fff3cd;
+      padding: 1rem;
+      border-left: 5px solid #ffc107;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    .lesson-section {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lesson-section">
+      <h2 id="lesson2-1">Lesson 2.1: Introduction to Data Structures</h2>
+      <p>Data structures are the backbone of computer programming. They determine how data is organized, stored, and manipulated for efficient problem-solving.</p>
+
+      <h4>📦 What Are Data Structures?</h4>
+      <ul>
+        <li>🔢 <strong>Static Structures:</strong> Fixed-size containers like arrays</li>
+        <li>🌀 <strong>Dynamic Structures:</strong> Expandable containers like linked lists</li>
+        <li>🧱 <strong>Linear Structures:</strong> Arrays, lists, stacks, and queues</li>
+        <li>🌳 <strong>Hierarchical Structures:</strong> Trees, heaps</li>
+        <li>🌐 <strong>Graph Structures:</strong> Represent connections like social networks</li>
+        <li>⚖️ <strong>Hash-Based Structures:</strong> Key-value pairs for constant-time access</li>
+      </ul>
+
+      <h4>🚀 Importance of Data Structures</h4>
+      <ul>
+        <li>🔄 Optimize algorithm performance</li>
+        <li>🧠 Improve problem-solving and logical thinking</li>
+        <li>⚙️ Enable reusable and scalable code</li>
+        <li>📊 Essential for databases, compilers, OS design, and more</li>
+        <li>🔍 Help solve complex real-world problems more efficiently</li>
+        <li>📈 Used in file systems, networking, AI, and system design</li>
+      </ul>
+
+      <h4>🧪 Examples</h4>
+      <div class="code-block">// Example 1: Stack using array
+int stack[100], top = -1;
+void push(int val) {
+  stack[++top] = val;
+}</div>
+
+      <div class="code-block">// Example 2: Using a queue in Python
+from collections import deque
+queue = deque()
+queue.append('A')
+queue.append('B')
+queue.popleft()  # Removes 'A'</div>
+
+      <div class="note">
+        📌 <strong>Did you know?</strong> Choosing the wrong data structure can turn a fast program into a slow one!
+      </div>
+
+      <div class="lesson-section" style="background-color: #e8f5e9; border-left: 6px solid #43a047;">
+        <h3>🔑 Key Takeaways (Lesson 2.1)</h3>
+        <ul>
+          <li>Data structures define the structure and efficiency of a program.</li>
+          <li>They are classified into linear, non-linear, static, and dynamic types.</li>
+          <li>Mastering them is critical to cracking technical interviews.</li>
+          <li>They're used everywhere: memory management, file systems, compilers, etc.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson2-2">Lesson 2.2: Arrays</h2>
+      <p>Arrays are fundamental data structures that store elements of the same type in contiguous memory locations.</p>
+
+      <h4>🔢 Key Characteristics</h4>
+      <ul>
+        <li>⚡ Fast random access (O(1)) via indexing</li>
+        <li>📏 Fixed size defined at creation</li>
+        <li>📚 Easy to traverse using loops</li>
+        <li>🧠 Used for static memory allocation</li>
+      </ul>
+
+      <h4>🛠️ Examples</h4>
+      <div class="code-block">// Example 1: Traversing an array
+int arr[3] = {1, 2, 3};
+for (int i = 0; i < 3; i++) {
+  printf("%d ", arr[i]);
+}</div>
+
+      <div class="code-block">// Example 2: Array in Python
+arr = [5, 10, 15, 20]
+print(arr[2])  # Output: 15</div>
+
+      <h4>✅ Pros</h4>
+      <ul>
+        <li>Fast lookup by index</li>
+        <li>Straightforward memory model</li>
+        <li>Used in most low-level programming tasks</li>
+      </ul>
+
+      <h4>⚠️ Cons</h4>
+      <ul>
+        <li>Size is fixed; can't grow or shrink</li>
+        <li>Insertion/deletion can be costly (O(n))</li>
+        <li>Wasted memory if not fully utilized</li>
+      </ul>
+
+      <div class="note">
+        💡 Arrays are best when the number of elements is known in advance and random access is required.
+      </div>
+
+      <div class="lesson-section" style="background-color: #e8f5e9; border-left: 6px solid #43a047;">
+        <h3>🔑 Key Takeaways (Lesson 2.2)</h3>
+        <ul>
+          <li>Use arrays for fast, indexed data access</li>
+          <li>They provide constant-time lookup but are static in size</li>
+          <li>Efficient traversal and storage with a simple layout</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson2-3">Lesson 2.3: Linked Lists</h2>
+      <p>Linked lists are dynamic data structures where each element (node) contains data and a reference to the next node in the sequence.</p>
+
+      <h4>🔗 Key Features</h4>
+      <ul>
+        <li>Dynamic memory allocation — size can grow/shrink at runtime</li>
+        <li>Each node stores data and a pointer to the next node</li>
+        <li>Supports efficient insertions and deletions</li>
+      </ul>
+
+      <h4>🛠️ Examples</h4>
+      <div class="code-block">// Example 1: Simple Node in C
+struct Node {
+  int data;
+  struct Node* next;
+};</div>
+
+      <div class="code-block"># Example 2: Python implementation
+class Node:
+  def __init__(self, data):
+    self.data = data
+    self.next = None
+node1 = Node(5)</div>
+
+      <h4>📚 Types of Linked Lists</h4>
+      <ul>
+        <li>🔁 Singly Linked List (one pointer to next)</li>
+        <li>↔️ Doubly Linked List (pointers to next and previous)</li>
+        <li>🔄 Circular Linked List (last node links to the first)</li>
+      </ul>
+
+      <h4>✅ Pros</h4>
+      <ul>
+        <li>No predefined size</li>
+        <li>Efficient insertion/deletion at the beginning or middle</li>
+        <li>Great for implementing stacks, queues, graphs</li>
+      </ul>
+
+      <h4>⚠️ Cons</h4>
+      <ul>
+        <li>Sequential access only (no random indexing)</li>
+        <li>Extra memory needed for pointers</li>
+        <li>More complex traversal and manipulation</li>
+      </ul>
+
+      <div class="note">
+        🧠 Linked lists are foundational for building more advanced structures like stacks, queues, graphs, and even hash tables.
+      </div>
+
+      <div class="lesson-section" style="background-color: #e8f5e9; border-left: 6px solid #43a047;">
+        <h3>🔑 Key Takeaways (Lesson 2.3)</h3>
+        <ul>
+          <li>Flexible, memory-efficient structure</li>
+          <li>Ideal for dynamic data and when frequent insertions/deletions are needed</li>
+          <li>Used in many real-world applications including memory management and OS design</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

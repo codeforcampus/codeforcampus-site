@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 6: Recursion & Backtracking</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    h4 {
+      color: #2c3e50;
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    .note {
+      background-color: #fff3cd;
+      padding: 1rem;
+      border-left: 5px solid #ffc107;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    .lesson-section {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lesson-section">
+      <h2 id="lesson6-1">Lesson 6.1: Introduction to Recursion</h2>
+      <p>Recursion is a programming technique where a function calls itself to solve a smaller subproblem of the original. It's particularly useful for solving problems that can be broken down into smaller, similar problems such as tree traversals, factorials, and the Fibonacci sequence.</p>
+      <h4>🔁 Key Points</h4>
+      <ul>
+        <li>Used when a problem can be divided into similar subproblems.</li>
+        <li>Needs a base case to stop recursion and avoid infinite loops.</li>
+        <li>Useful in mathematical computations like factorial, power, and GCD.</li>
+        <li>Enables elegant solutions for tree and graph problems.</li>
+        <li>Each recursive call adds to the stack memory.</li>
+        <li>Overuse of recursion can lead to stack overflow.</li>
+        <li>Tail recursion optimizes performance in some languages.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block"># Recursive Factorial
+def factorial(n):
+  if n == 0:
+    return 1
+  return n * factorial(n - 1)</div>
+
+      <div class="code-block"># Fibonacci using Recursion
+def fibonacci(n):
+  if n <= 1:
+    return n
+  return fibonacci(n - 1) + fibonacci(n - 2)</div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson6-2">Lesson 6.2: Understanding Backtracking</h2>
+      <p>Backtracking is an algorithmic technique used for finding all or some solutions to a problem by exploring all possible options. If a path fails, it backtracks and tries a different option. It’s widely used in constraint satisfaction problems like Sudoku, N-Queens, and solving mazes.</p>
+      <h4>🎯 Key Points</h4>
+      <ul>
+        <li>Solves problems through trial and error.</li>
+        <li>Prunes paths that don't lead to a solution early on.</li>
+        <li>Uses recursion to explore decision trees.</li>
+        <li>Helps solve puzzles and logic games efficiently.</li>
+        <li>Reduces unnecessary computation using constraints.</li>
+        <li>Returns to previous state (backtracks) after trying each path.</li>
+        <li>Used in AI, constraint satisfaction, and pathfinding algorithms.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block"># Solving N-Queens (conceptual)
+def solve(board, row):
+  if row == len(board):
+    print(board)
+    return
+  for col in range(len(board)):
+    if is_safe(board, row, col):
+      board[row][col] = 1
+      solve(board, row + 1)
+      board[row][col] = 0</div>
+
+      <div class="code-block"># Maze Solver using Backtracking
+def solve_maze(x, y, maze):
+  if at_end(x, y):
+    return True
+  if is_safe(x, y, maze):
+    mark_path(x, y)
+    if solve_maze(x+1, y, maze) or solve_maze(x, y+1, maze):
+      return True
+    unmark_path(x, y)
+  return False</div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson6-3">Lesson 6.3: Recursion vs Backtracking in Practice</h2>
+      <p>While recursion provides the foundation, backtracking builds on top by systematically exploring paths and pruning those that don't meet constraints. Recursion solves problems like Fibonacci, while backtracking solves constraint-heavy problems like Sudoku. The synergy between them is vital in solving complex, decision-based problems.</p>
+      <h4>⚙️ Key Points</h4>
+      <ul>
+        <li>Recursion simplifies problems via self-calling functions.</li>
+        <li>Backtracking explores all valid configurations.</li>
+        <li>Backtracking depends on recursive structure.</li>
+        <li>Backtracking adds pruning to basic recursion.</li>
+        <li>Both use stack memory extensively.</li>
+        <li>Backtracking is more powerful for exhaustive search.</li>
+        <li>Recursive depth affects time and space complexity.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block"># Recursion: Sum of Digits
+def digit_sum(n):
+  if n == 0:
+    return 0
+  return n % 10 + digit_sum(n // 10)</div>
+
+      <div class="code-block"># Backtracking: Word Search in Grid (conceptual)
+def word_search(grid, word):
+  for i in range(len(grid)):
+    for j in range(len(grid[0])):
+      if dfs(grid, word, i, j, 0):
+        return True
+  return False</div>
+    </div>
+  </div>
+</body>
+</html>

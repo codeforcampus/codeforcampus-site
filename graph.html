@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 4: Graphs</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    h4 {
+      color: #2c3e50;
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    .note {
+      background-color: #fff3cd;
+      padding: 1rem;
+      border-left: 5px solid #ffc107;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    .lesson-section {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lesson-section">
+      <h2 id="lesson4-1">Lesson 4.1: Introduction to Graphs</h2>
+      <p>Graphs are dynamic data structures used to represent relationships between entities. A graph is made of vertices (nodes) and edges (connections), and it can be either directed or undirected. These structures are extremely powerful in modeling real-world networks, such as social media relationships, road maps, flight routes, and more. Graphs are widely used in areas like AI, network routing, recommendation engines, and compilers. Understanding graphs provides the foundation for mastering advanced algorithms like Dijkstra’s, BFS, DFS, and topological sort.</p>
+
+      <h4>🌐 Key Points</h4>
+      <ul>
+        <li>Graphs can be directed (like Twitter follow) or undirected (like Facebook friends).</li>
+        <li>Edges may carry weights (distance, cost, time) or be unweighted.</li>
+        <li>Represented via adjacency list or matrix.</li>
+        <li>Used in shortest path problems (Dijkstra, Bellman-Ford).</li>
+        <li>Helps detect cycles, connectivity, and strongly connected components.</li>
+        <li>Useful in scheduling (via topological sort).</li>
+        <li>Applied in search algorithms like DFS and BFS.</li>
+      </ul>
+
+      <h4>🧪 Examples</h4>
+      <div class="code-block">// Example 1: Adjacency List in C++
+vector<vector<int>> graph(n);
+graph[0].push_back(1);
+graph[1].push_back(2);</div>
+
+      <div class="code-block"># Example 2: Graph using dict in Python
+graph = {
+  'A': ['B', 'C'],
+  'B': ['D'],
+  'C': ['E'],
+  'D': [],
+  'E': []
+}</div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson4-2">Lesson 4.2: BFS & DFS</h2>
+      <p>Breadth-First Search (BFS) and Depth-First Search (DFS) are two fundamental graph traversal algorithms. BFS explores the nearest nodes level by level using a queue, while DFS dives deep into one path before backtracking, using a stack or recursion. BFS is excellent for shortest path discovery in unweighted graphs, whereas DFS excels in cycle detection, pathfinding, and solving puzzles like mazes or sudoku.</p>
+
+      <h4>🧠 Key Points</h4>
+      <ul>
+        <li>BFS uses a queue and explores in layers.</li>
+        <li>DFS uses a stack or recursion to explore depth-wise.</li>
+        <li>BFS is ideal for shortest path in unweighted graphs.</li>
+        <li>DFS is useful for cycle detection and topological sorting.</li>
+        <li>Both can be used on trees and graphs (directed/undirected).</li>
+        <li>DFS is used in maze solvers and puzzle algorithms.</li>
+        <li>BFS is used in social network analysis (e.g., friend recommendations).</li>
+      </ul>
+
+      <h4>🧪 Examples</h4>
+      <div class="code-block"># Example 1: BFS in Python
+from collections import deque
+def bfs(graph, start):
+  visited = set()
+  queue = deque([start])
+  while queue:
+    node = queue.popleft()
+    if node not in visited:
+      visited.add(node)
+      queue.extend(graph[node])</div>
+
+      <div class="code-block"># Example 2: DFS in Python
+def dfs(graph, node, visited):
+  if node not in visited:
+    visited.add(node)
+    for neighbor in graph[node]:
+      dfs(graph, neighbor, visited)</div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson4-3">Lesson 4.3: Weighted Graphs & Dijkstra's Algorithm</h2>
+      <p>Weighted graphs associate weights with edges to represent costs like distance or time. Dijkstra’s Algorithm is a popular method to find the shortest path from a source to all other nodes in such graphs. It uses a priority queue (min-heap) to always explore the least-cost path first. It’s widely used in navigation apps (like Google Maps), network routing, and logistics planning.</p>
+
+      <h4>🔍 Key Points</h4>
+      <ul>
+        <li>Edge weights represent cost (distance, time, etc.).</li>
+        <li>Dijkstra uses a priority queue to get the minimum distance node.</li>
+        <li>Only works on graphs with non-negative weights.</li>
+        <li>Time complexity is O(E + V log V) using a min-heap.</li>
+        <li>Used in GPS, airline routing, and telecom networks.</li>
+        <li>Frequently applied in real-time systems for route optimization.</li>
+        <li>Foundational for advanced algorithms like A*.</li>
+      </ul>
+
+      <h4>🧪 Examples</h4>
+      <div class="code-block">// Example 1: Priority Queue Initialization in C++
+priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>> pq;</div>
+
+      <div class="code-block"># Example 2: Dijkstra Algorithm Step (Python)
+import heapq
+heap = [(0, start)]
+dist = {start: 0}
+while heap:
+  cost, u = heapq.heappop(heap)
+  for v, weight in graph[u]:
+    if dist.get(v, float('inf')) > cost + weight:
+      dist[v] = cost + weight
+      heapq.heappush(heap, (dist[v], v))</div>
+    </div>
+  </div>
+</body>
+</html>

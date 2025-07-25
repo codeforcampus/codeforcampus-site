@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 7: Dynamic Programming</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    h4 {
+      color: #2c3e50;
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    .lesson-section {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lesson-section">
+      <h2 id="lesson7-1">Lesson 7.1: Memoization</h2>
+      <p>Memoization is a top-down approach to solving dynamic programming problems. It stores the results of expensive function calls and reuses them when the same inputs occur again.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Memoization avoids repeated computation by caching results.</li>
+        <li>Implemented using recursion + hash maps or arrays.</li>
+        <li>Reduces exponential time to polynomial in many problems.</li>
+        <li>Useful in problems like Fibonacci, climbing stairs, etc.</li>
+        <li>Top-down approach: solve and memoize subproblems.</li>
+        <li>Each subproblem is solved only once.</li>
+        <li>Best when problem has overlapping subproblems and optimal substructure.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Fibonacci with memoization
+memo = {}
+def fib(n):
+  if n in memo: return memo[n]
+  if n <= 1: return n
+  memo[n] = fib(n-1) + fib(n-2)
+  return memo[n]
+      </div>
+      <div class="code-block">
+# Climbing Stairs
+memo = {}
+def climb(n):
+  if n <= 2: return n
+  if n in memo: return memo[n]
+  memo[n] = climb(n-1) + climb(n-2)
+  return memo[n]
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson7-2">Lesson 7.2: Tabulation</h2>
+      <p>Tabulation is the bottom-up method of solving dynamic programming problems. It solves all related subproblems first and builds up the final answer.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Tabulation uses iteration instead of recursion.</li>
+        <li>Space-efficient and faster than memoization in practice.</li>
+        <li>Fills up a DP table from base cases to the final result.</li>
+        <li>Best for problems with small input sizes or strict memory needs.</li>
+        <li>Bottom-up approach: solve smallest subproblems first.</li>
+        <li>Common in coin change, knapsack, and LIS problems.</li>
+        <li>Easy to convert from recursive to iterative with a table.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Fibonacci with tabulation
+def fib(n):
+  dp = [0] * (n+1)
+  dp[1] = 1
+  for i in range(2, n+1):
+    dp[i] = dp[i-1] + dp[i-2]
+  return dp[n]
+      </div>
+      <div class="code-block">
+# Climbing Stairs
+def climb(n):
+  dp = [0] * (n+1)
+  dp[1], dp[2] = 1, 2
+  for i in range(3, n+1):
+    dp[i] = dp[i-1] + dp[i-2]
+  return dp[n]
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson7-3">Lesson 7.3: Classic DP Problems</h2>
+      <p>Dynamic programming shines in solving classic optimization and counting problems. These include subsequence problems, grid paths, knapsack, and more.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Fibonacci and Climbing Stairs: basic recursion to DP shift.</li>
+        <li>0/1 Knapsack: pick-or-not-pick paradigm.</li>
+        <li>Longest Common Subsequence: string alignment, diff tools.</li>
+        <li>Coin Change: minimum number of coins to make target.</li>
+        <li>Grid Unique Paths: movement restricted to down/right.</li>
+        <li>Subset Sum: can we form a sum from given numbers?</li>
+        <li>Palindrome Partitioning: DP + string problem fusion.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Longest Common Subsequence
+def lcs(s1, s2):
+  m, n = len(s1), len(s2)
+  dp = [[0]*(n+1) for _ in range(m+1)]
+  for i in range(1, m+1):
+    for j in range(1, n+1):
+      if s1[i-1] == s2[j-1]:
+        dp[i][j] = 1 + dp[i-1][j-1]
+      else:
+        dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+  return dp[m][n]
+      </div>
+      <div class="code-block">
+# 0/1 Knapsack Problem
+def knapsack(W, wt, val, n):
+  dp = [[0 for x in range(W+1)] for x in range(n+1)]
+  for i in range(n+1):
+    for w in range(W+1):
+      if i == 0 or w == 0:
+        dp[i][w] = 0
+      elif wt[i-1] <= w:
+        dp[i][w] = max(val[i-1] + dp[i-1][w-wt[i-1]], dp[i-1][w])
+      else:
+        dp[i][w] = dp[i-1][w]
+  return dp[n][W]
+      </div>
+    </div>
+  </div>
+</body>
+</html>

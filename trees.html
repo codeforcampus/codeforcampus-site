@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 3: Trees</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    h4 {
+      color: #2c3e50;
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    .note {
+      background-color: #fff3cd;
+      padding: 1rem;
+      border-left: 5px solid #ffc107;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    .lesson-section {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lesson-section">
+      <h2 id="lesson3-1">Lesson 3.1: Introduction to Trees</h2>
+      <p>Trees are hierarchical data structures that reflect a parent-child relationship. They are non-linear and allow for efficient searching, insertion, and deletion. Each node contains data and references to its child nodes. Trees begin with a root node and expand downward. Trees are essential in representing structured data and are widely used in computer science for their efficiency and versatility.</p>
+      <p>Trees are dynamic, non-linear structures composed of nodes connected by edges. The topmost node is the root, and each node may have children, forming branches. Unlike arrays and lists, trees model hierarchical relationships, making them ideal for organizing structured data. They support recursive operations for searching and manipulation and are highly efficient in terms of memory and performance. You'll encounter trees in file systems, routing tables, compiler design, and AI decision models. Types of trees include Binary Trees, Binary Search Trees, AVL Trees, and more. Mastering trees enhances understanding of complex systems and improves algorithmic thinking in interviews and real-world applications.</p>
+
+      <h4>🌳 Key Concepts & Real-World Uses</h4>
+      <ul>
+        <li>Used in operating systems for directory structures.</li>
+        <li>Enables auto-suggestions in search engines using prefix trees.</li>
+        <li>Binary Trees are used in expression evaluation and parsing.</li>
+        <li>Trees help with decision-making algorithms like game AI.</li>
+        <li>In XML/HTML, the document structure is represented as a tree.</li>
+        <li>Databases use B-Trees/B+ Trees for indexing.</li>
+        <li>Routing algorithms in networks use spanning trees.</li>
+      </ul>
+
+      <h4>🧪 Examples</h4>
+      <div class="code-block">// Example 1: Binary Tree Node in C++
+struct Node {
+  int data;
+  Node* left;
+  Node* right;
+};</div>
+
+      <div class="code-block"># Example 2: Basic Tree Structure in Python
+class Node:
+  def __init__(self, data):
+    self.data = data
+    self.left = None
+    self.right = None</div>
+
+      <div class="note">
+        📌 Tree structures are foundational to many system-level and user-facing technologies like databases, compilers, and UI elements.
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson3-2">Lesson 3.2: Binary Trees & Traversals</h2>
+      <p>Binary trees are a type of tree where each node has at most two children. Traversals allow you to visit all nodes in a systematic way. Inorder (LNR), Preorder (NLR), Postorder (LRN), and Level-order are key strategies. They are vital in algorithms, expression parsing, and tree manipulation. Understanding these is foundational to solving hierarchical problems efficiently.</p>
+      <h4>🌳 Key Concepts & Real-World Uses</h4>
+      <ul>
+        <li>Expression trees use postorder traversal to evaluate equations.</li>
+        <li>Preorder traversal helps with copying tree structures.</li>
+        <li>Inorder traversal yields sorted data in BSTs.</li>
+        <li>Level-order traversal is used in serialization of trees.</li>
+        <li>Preorder helps create prefix notation in compilers.</li>
+        <li>Decision trees in AI are based on preorder traversal.</li>
+        <li>Used in hierarchical menu navigation in UIs.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">// Example 1: Inorder Traversal in C++
+void inorder(Node* root) {
+  if (root == nullptr) return;
+  inorder(root->left);
+  cout << root->data << " ";
+  inorder(root->right);
+}</div>
+      <div class="code-block"># Example 2: Preorder Traversal in Python
+def preorder(node):
+  if node:
+    print(node.data)
+    preorder(node.left)
+    preorder(node.right)</div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson3-3">Lesson 3.3: Binary Search Trees (BST)</h2>
+      <p>Binary Search Trees (BST) are a special kind of binary tree that stores data in a sorted structure. For every node, values in the left subtree are less than the node’s value, and those in the right are greater. This allows for efficient search, insertion, and deletion — typically in O(log n) time for balanced BSTs. They are widely used in databases, memory allocators, and real-time applications that require fast lookups.</p>
+      <h4>🌳 Key Concepts & Real-World Uses</h4>
+      <ul>
+        <li>Used in database indexing for fast record retrieval.</li>
+        <li>In-memory search engines often use BST-like structures.</li>
+        <li>Used in compilers for constant expression folding.</li>
+        <li>Helps implement associative arrays and sets.</li>
+        <li>Can be converted to sorted arrays using inorder traversal.</li>
+        <li>Forms the base for balanced variants like AVL and Red-Black Trees.</li>
+        <li>Real-time leaderboards use BST to maintain ranking.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">// Example 1: BST Insert in C++
+Node* insert(Node* root, int key) {
+  if (!root) return new Node(key);
+  if (key < root->data)
+    root->left = insert(root->left, key);
+  else
+    root->right = insert(root->right, key);
+  return root;
+}</div>
+      <div class="code-block"># Example 2: BST Search in Python
+def search(node, val):
+  if node is None or node.data == val:
+    return node
+  if val < node.data:
+    return search(node.left, val)
+  return search(node.right, val)</div>
+    </div>
+  </div>
+</body>
+</html>

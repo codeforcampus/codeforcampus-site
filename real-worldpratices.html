@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 9: Real-World Practice</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    h4 {
+      color: #2c3e50;
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    .lesson-section {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lesson-section">
+      <h2 id="lesson9-1">Lesson 9.1: Patterns & Heuristics</h2>
+      <p>Patterns and heuristics are mental shortcuts and solution templates that allow programmers to quickly identify approaches for solving problems efficiently. They aren't exact formulas but guide intuition and accelerate development and debugging.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Recognizing problem templates helps identify correct algorithms quickly.</li>
+        <li>Sliding window and two pointers for sequence problems.</li>
+        <li>Recursion with memoization for overlapping subproblems.</li>
+        <li>Graph traversal for anything network/relationship-based.</li>
+        <li>Greedy patterns for local optimization problems.</li>
+        <li>Backtracking for generating combinations or permutations.</li>
+        <li>Divide and conquer in sorting and search-based problems.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Sliding window max sum example
+arr = [1, 4, 2, 10, 23, 3, 1, 0, 20]
+k = 4
+window_sum = sum(arr[:k])
+max_sum = window_sum
+for i in range(len(arr) - k):
+  window_sum = window_sum - arr[i] + arr[i + k]
+  max_sum = max(max_sum, window_sum)
+print(max_sum)
+      </div>
+      <div class="code-block">
+# Output: 39
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson9-2">Lesson 9.2: Tries & DSU</h2>
+      <p>Tries (prefix trees) and DSU (Disjoint Set Union) are specialized structures used in many real-world systems like autocomplete engines, DNS servers, network grouping algorithms, and union-find operations.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Tries store words in tree format — useful in dictionaries and search engines.</li>
+        <li>DSU tracks connected components efficiently in networks.</li>
+        <li>DSU uses path compression + union by rank for efficiency.</li>
+        <li>Autocomplete features use Trie traversal for fast lookups.</li>
+        <li>Tries optimize prefix-based queries like IP routing.</li>
+        <li>DSU used in Kruskal's algorithm for MST.</li>
+        <li>Both structures require careful space/time optimization.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Trie insertion example
+class TrieNode:
+  def __init__(self):
+    self.children = {}
+    self.end = False
+
+def insert(root, word):
+  node = root
+  for ch in word:
+    if ch not in node.children:
+      node.children[ch] = TrieNode()
+    node = node.children[ch]
+  node.end = True
+      </div>
+      <div class="code-block">
+# DSU example
+parent = list(range(5))
+
+def find(x):
+  if parent[x] != x:
+    parent[x] = find(parent[x])
+  return parent[x]
+
+def union(x, y):
+  root_x = find(x)
+  root_y = find(y)
+  if root_x != root_y:
+    parent[root_x] = root_y
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson9-3">Lesson 9.3: Interview Prep</h2>
+      <p>Cracking coding interviews isn’t just about solving problems — it's about practicing core concepts repeatedly, analyzing patterns, and improving explanation skills. This lesson helps you prepare strategically for interviews.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Practice common problems like 2-sum, LRU cache, binary trees.</li>
+        <li>Master foundational topics: DSA, recursion, graphs.</li>
+        <li>Use platforms like LeetCode, HackerRank, Codeforces.</li>
+        <li>Follow the 5-step process: Understand → Plan → Code → Test → Optimize.</li>
+        <li>Mock interviews help simulate real pressure and refine clarity.</li>
+        <li>Review time/space complexity post-solution.</li>
+        <li>Prepare for behavioral questions too.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Two sum problem
+nums = [2, 7, 11, 15]
+target = 9
+seen = {}
+for i, num in enumerate(nums):
+  if target - num in seen:
+    print([seen[target - num], i])
+  seen[num] = i
+      </div>
+      <div class="code-block">
+# Output: [0, 1]
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 5: Sorting & Searching</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    h4 {
+      color: #2c3e50;
+      margin-top: 1.5rem;
+    }
+
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    .lesson-section {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="lesson-section">
+      <h2 id="lesson5-1">Lesson 5.1: Introduction to Sorting Algorithms</h2>
+      <p>Sorting is the process of arranging data in a particular order — usually ascending or descending. Sorting algorithms are crucial for efficient searching and organizing data for real-time systems, e-commerce filtering, and more.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Sorting helps in efficient searching (e.g., Binary Search).</li>
+        <li>Popular algorithms include Bubble Sort, Merge Sort, Quick Sort.</li>
+        <li>Some are comparison-based, others are non-comparison based (e.g., Radix Sort).</li>
+        <li>Merge Sort and Quick Sort use divide-and-conquer.</li>
+        <li>Sorting improves data presentation in UI/UX systems.</li>
+        <li>Algorithms vary by stability, space, and time complexity.</li>
+        <li>Sorting is often used before binary search and range queries.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Bubble Sort
+def bubble_sort(arr):
+  n = len(arr)
+  for i in range(n):
+    for j in range(0, n-i-1):
+      if arr[j] > arr[j+1]:
+        arr[j], arr[j+1] = arr[j+1], arr[j]
+  return arr
+      </div>
+      <div class="code-block">
+# Merge Sort
+def merge_sort(arr):
+  if len(arr) > 1:
+    mid = len(arr) // 2
+    L = arr[:mid]
+    R = arr[mid:]
+    merge_sort(L)
+    merge_sort(R)
+    i = j = k = 0
+    while i < len(L) and j < len(R):
+      if L[i] < R[j]:
+        arr[k] = L[i]
+        i += 1
+      else:
+        arr[k] = R[j]
+        j += 1
+      k += 1
+    while i < len(L):
+      arr[k] = L[i]
+      i += 1
+      k += 1
+    while j < len(R):
+      arr[k] = R[j]
+      j += 1
+      k += 1
+  return arr
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson5-2">Lesson 5.2: Searching Algorithms</h2>
+      <p>Searching refers to finding a specific item in a data set. Efficient search methods improve performance and user experience in applications like autocomplete, file lookup, and database queries.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Two main types: Linear Search and Binary Search.</li>
+        <li>Linear Search scans all elements sequentially — O(n).</li>
+        <li>Binary Search works on sorted arrays — O(log n).</li>
+        <li>Searching is foundational for many real-time systems.</li>
+        <li>Can be applied to arrays, trees, graphs, and more.</li>
+        <li>Recursive and iterative binary search are both common.</li>
+        <li>Efficient searching improves app responsiveness.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Linear Search
+def linear_search(arr, target):
+  for i in range(len(arr)):
+    if arr[i] == target:
+      return i
+  return -1
+      </div>
+      <div class="code-block">
+# Binary Search
+def binary_search(arr, target):
+  left, right = 0, len(arr) - 1
+  while left <= right:
+    mid = (left + right) // 2
+    if arr[mid] == target:
+      return mid
+    elif arr[mid] < target:
+      left = mid + 1
+    else:
+      right = mid - 1
+  return -1
+      </div>
+    </div>
+
+    <div class="lesson-section">
+      <h2 id="lesson5-3">Lesson 5.3: Real-World Use Cases</h2>
+      <p>Sorting and searching algorithms power critical features in almost every software application. From search engines to logistics and e-commerce filtering, their performance is directly tied to user experience and operational efficiency.</p>
+      <h4>📌 Key Points</h4>
+      <ul>
+        <li>Search engines use advanced searching techniques and indexing.</li>
+        <li>Online stores sort products by price, rating, popularity, etc.</li>
+        <li>Databases rely on efficient sorting for indexing and joins.</li>
+        <li>Route-finding algorithms often rely on sorted data.</li>
+        <li>Real-time applications use binary search trees and heaps.</li>
+        <li>Sorting helps preprocess data before machine learning analysis.</li>
+        <li>Optimized search improves latency in chat, feed, and file apps.</li>
+      </ul>
+      <h4>🧪 Examples</h4>
+      <div class="code-block">
+# Application: Filter top 5 scores
+scores = [82, 91, 78, 95, 88]
+top_scores = sorted(scores, reverse=True)[:5]
+print(top_scores)  # [95, 91, 88, 82, 78]
+      </div>
+      <div class="code-block">
+# Application: Binary search on sorted list
+ids = [1001, 1004, 1008, 1010]
+print(binary_search(ids, 1004))  # Output: 1
+      </div>
+    </div>
+  </div>
+</body>
+</html>
