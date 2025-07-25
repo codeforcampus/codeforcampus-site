@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python Introduction </title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #2563eb;
+      line-height: 1.6;
+    }
+
+    .header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+
+    .main-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      background: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2.5rem;
+      font-size: 1.6rem;
+    }
+
+    h4 {
+      margin-top: 1.5rem;
+      color: #34495e;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #444;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    ul li {
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+      position: relative;
+      font-size: 1rem;
+    }
+
+    ul li::before {
+      content: "✔";
+      color: #2ecc71;
+      position: absolute;
+      left: 0;
+    }
+
+    .highlight {
+      background-color: #dff6ff;
+      border-left: 5px solid #3498db;
+      padding: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      font-size: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
+    }
+
+    pre {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin: 1rem 0;
+    }
+
+    code {
+      background-color: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #ecf0f1;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div class="main-content">
+    <h2>1.1 What is Python?</h2>
+    <p>Python is a powerful, high-level programming language designed with a focus on simplicity, readability, and versatility. It is used across various domains — from web development and data science to automation, artificial intelligence, and more.</p>
+
+    <div class="highlight">
+      Python lets you build more with less code. It’s often called the “Swiss Army Knife” of programming languages.
+    </div>
+
+    <h4>✅ Example:</h4>
+    <pre>
+# Simple Python program
+print("Hello, World!")
+    </pre>
+
+    <h4>🔑 Key Points:</h4>
+    <ul>
+      <li>Easy to read and write</li>
+      <li>Free and open-source</li>
+      <li>Runs on all platforms (Windows, Mac, Linux)</li>
+      <li>Great for beginners and experts alike</li>
+      <li>Huge ecosystem of libraries (e.g., NumPy, Flask, Django)</li>
+      <li>Used by top companies like Google, Netflix, and NASA</li>
+      <li>Backed by a massive global community</li>
+    </ul>
+
+    <h2>1.2 The Very Basics</h2>
+    <p>Python emphasizes code clarity. It uses indentation to define blocks instead of braces or keywords — making the code look neat and clean by default.</p>
+
+    <div class="highlight">
+      Python code often feels like writing English instructions.
+    </div>
+
+    <h4>✅ Example:</h4>
+    <pre>
+name = "Alice"
+if name == "Alice":
+    print("Hello, Alice!")
+    </pre>
+
+    <h4>🔑 Key Points:</h4>
+    <ul>
+      <li>Whitespace (indentation) is meaningful</li>
+      <li>No semicolons needed at line ends</li>
+      <li>Variables don’t need explicit declaration</li>
+      <li>Case-sensitive language</li>
+      <li>Everything is treated as an object</li>
+      <li>Supports both scripting and modular programming</li>
+      <li>Beginner-friendly but powerful</li>
+    </ul>
+
+    <h2>1.3 Invoking Python</h2>
+    <p>You can use Python interactively or by writing scripts. It's versatile in how you execute your code, depending on the task at hand.</p>
+
+    <h4>✅ Interactive Mode (REPL):</h4>
+    <pre>
+$ python
+>>> print("Hello, Python!")
+Hello, Python!
+    </pre>
+
+    <h4>✅ Script Mode:</h4>
+    <pre>
+$ python my_script.py
+    </pre>
+
+    <h4>✅ Shebang on UNIX/Linux:</h4>
+    <pre>
+#!/usr/bin/env python3
+print("Running with shebang")
+    </pre>
+
+    <h4>🔑 Key Points:</h4>
+    <ul>
+      <li>Use <code>python</code> or <code>python3</code> to start the interpreter</li>
+      <li>Run .py files via terminal or IDE</li>
+      <li>Use <code>print()</code> for output</li>
+      <li>Quit REPL with <code>exit()</code> or Ctrl+D</li>
+      <li>Can write scripts for automation</li>
+      <li>Works in terminal, IDLE, VS Code, PyCharm, Jupyter</li>
+      <li>Scripts can be made executable on Linux/macOS</li>
+    </ul>
+
+    <h2>1.4 Basic Principles</h2>
+    <p>Python is guided by design principles that prioritize readability, simplicity, and productivity. It promotes writing clean, logical code for small and large-scale projects alike.</p>
+
+    <div class="highlight">
+      "Simple is better than complex. Readability counts." — The Zen of Python
+    </div>
+
+    <h4>✅ Example: Exception Handling</h4>
+    <pre>
+try:
+    number = 10 / 0
+except ZeroDivisionError:
+    print("You can't divide by zero!")
+    </pre>
+
+    <h4>🔑 Key Principles:</h4>
+    <ul>
+      <li><strong>Minimal Syntax:</strong> Less clutter, clean structure</li>
+      <li><strong>Modules:</strong> Import built-in and external libraries easily</li>
+      <li><strong>OOP Support:</strong> Full object-oriented capabilities</li>
+      <li><strong>Namespaces:</strong> Clear variable scopes (LEGB)</li>
+      <li><strong>Error Handling:</strong> Catch and manage exceptions</li>
+      <li><strong>Dynamic Typing:</strong> No need to declare types explicitly</li>
+      <li><strong>Readability:</strong> Pythonic code is self-documenting</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    © 2025 YourName | Python Learning Platform 🐍
+  </div>
+
+</body>
+</html>
