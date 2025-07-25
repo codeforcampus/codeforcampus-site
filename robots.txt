@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://codeforcampus.site/sitemap.xml
