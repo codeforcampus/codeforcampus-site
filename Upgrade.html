@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upgrade Your Subscription</title>
+  <style>
+    /* Reset & base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f6ff;
+      color: #333;
+    }
+
+    header {
+      background: #007BFF;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .container h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .container p.subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      margin-bottom: 40px;
+    }
+
+    .plans {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .plan {
+      background: white;
+      border: 2px solid #e3e9f0;
+      border-radius: 16px;
+      padding: 40px 30px;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .plan:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .plan h3 {
+      font-size: 1.4rem;
+      color: #007BFF;
+      margin-bottom: 8px;
+    }
+
+    .plan .price {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #007BFF;
+    }
+
+    .plan ul {
+      list-style: none;
+      text-align: left;
+      padding-left: 0;
+      margin-bottom: 20px;
+    }
+
+    .plan ul li {
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .plan .button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .button-primary {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .button-primary:hover {
+      background-color: #0056b3;
+    }
+
+    .button-disabled {
+      background-color: #e0e0e0;
+      color: #888;
+      cursor: not-allowed;
+    }
+
+    .coming-soon {
+      background: #ffc107;
+      color: white;
+      font-size: 0.75rem;
+      padding: 6px 14px;
+      position: absolute;
+      top: 20px;
+      right: -40px;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .not-available-msg {
+      font-size: 0.9rem;
+      color: #999;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.4rem;
+      }
+
+      .container h2 {
+        font-size: 1.8rem;
+      }
+
+      .plan .price {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Website Header -->
+  <header>
+    <h1>CodeForCampus</h1> <!-- Change to your brand name -->
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h2>Upgrade Your Subscription</h2>
+    <p class="subtitle">Free forever. Paid plans coming soon with exciting features.</p>
+
+    <div class="plans">
+      <!-- Free Plan -->
+      <div class="plan">
+        <h3>Free Plan</h3>
+        <p class="price">$0 / month</p>
+        <ul>
+          <li>✅ Access to all free tutorials</li>
+          <li>✅ Community forum</li>
+          <li> ✅Certificates</li>
+          <li> ✅Quizzes</li>
+        </ul>
+        <button class="button button-disabled">Current Plan</button>
+      </div>
+
+      <!-- Pro Plan -->
+      <div class="plan" style="opacity: 0.7;">
+        <div class="coming-soon">Coming Soon</div>
+        <h3>Pro Plan</h3>
+        <p class="price">$9 / month</p>
+        <ul>
+          <li>✅ All Free features</li>
+          <li>✅ Certificates</li>
+          <li>✅ Quizzes</li>
+          <li>❌ Mentorship</li>
+        </ul>
+        <button class="button button-disabled" disabled>Not Available</button>
+        <p class="not-available-msg">This plan is not available yet.</p>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="plan" style="opacity: 0.7;">
+        <div class="coming-soon">Coming Soon</div>
+        <h3>Premium Plan</h3>
+        <p class="price">$29 / month</p>
+        <ul>
+          <li>✅ All Pro features</li>
+          <li>✅ 1-on-1 Mentorship</li>
+          <li>✅ Priority support</li>
+          <li>✅ Project reviews</li>
+        </ul>
+        <button class="button button-disabled" disabled>Not Available</button>
+        <p class="not-available-msg">This plan is not available yet.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

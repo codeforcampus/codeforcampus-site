@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeForCampus | Tutorials</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f1f7ff;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .hero {
+      padding: 50px 20px 30px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      color: #1e3c72;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .filters {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .filters button {
+      background: #fff;
+      border: 2px solid #1e3c72;
+      color: #1e3c72;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .filters button.active,
+    .filters button:hover {
+      background: #1e3c72;
+      color: #fff;
+    }
+
+    .tutorials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .tutorial-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 25px;
+      text-align: left;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 6px solid #1e3c72;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      opacity: 1;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .tutorial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .tutorial-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #1e3c72;
+    }
+
+    .tutorial-card p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 8px;
+    }
+
+    .tutorial-card span {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #777;
+      font-style: italic;
+    }
+
+    .tutorial-card.hidden {
+      display: none;
+    }
+
+    .cta {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      padding: 50px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .cta h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      background: #fff;
+      color: #1e3c72;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #f0f0f0;
+    }
+
+    footer {
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CodeForCampus</h1>
+    <p>Explore, Learn, and Excel with Our Free Tutorials</p>
+  </header>
+
+  <section class="hero">
+    <h2>📘 Browse Our Tutorials</h2>
+    <p>Choose a category to begin your learning journey. Filter by skill or topic and start coding now!</p>
+  </section>
+
+  <div class="filters">
+    <button class="filter-btn active" data-category="all">All</button>
+    <button class="filter-btn" data-category="programming">Programming</button>
+    <button class="filter-btn" data-category="cs-core">CS Core</button>
+    <button class="filter-btn" data-category="development">Development</button>
+  </div>
+
+  <section class="tutorials-grid">
+    <a href="c.html" class="tutorial-card programming">
+      <h3>🧮 C Programming</h3>
+      <p>Learn C fundamentals and memory-level control.</p>
+      <span>Beginner | 12 Lessons</span>
+    </a>
+    <a href="cpp.html" class="tutorial-card programming">
+      <h3>🚀 C++ Programming</h3>
+      <p>Object-oriented programming & STL in C++.</p>
+      <span>Beginner to Advanced</span>
+    </a>
+    <a href="python.html" class="tutorial-card programming">
+      <h3>🐍 Python Programming</h3>
+      <p>Python from zero — logic, syntax, and use cases.</p>
+      <span>Beginner Friendly</span>
+    </a>
+    <a href="dsa.html" class="tutorial-card cs-core">
+      <h3>📊 Data Structures & Algorithms</h3>
+      <p>All DSA concepts with problems & solutions.</p>
+      <span>20 Lessons | Essential for Interviews</span>
+    </a>
+    <a href="oose.html" class="tutorial-card cs-core">
+      <h3>💡 OOSE</h3>
+      <p>Object modeling, design patterns, and UML.</p>
+      <span>Engineering Subject</span>
+    </a>
+    <a href="os.html" class="tutorial-card cs-core">
+      <h3>🖥 Operating Systems</h3>
+      <p>Concepts like memory, scheduling, and threads.</p>
+      <span>CS Core</span>
+    </a>
+    <a href="dbms.html" class="tutorial-card cs-core">
+      <h3>🗄 DBMS</h3>
+      <p>Relational models, SQL, normalization.</p>
+      <span>13 Lessons</span>
+    </a>
+    <a href="networks.html" class="tutorial-card cs-core">
+      <h3>🌐 Computer Networks</h3>
+      <p>Layered architecture, protocols, IP & TCP.</p>
+      <span>Networking Core</span>
+    </a>
+    <a href="ml.html" class="tutorial-card development">
+      <h3>🤖 Machine Learning</h3>
+      <p>Intro to models, algorithms, and prediction.</p>
+      <span>Python | Math Required</span>
+    </a>
+    <a href="fullstack.html" class="tutorial-card development">
+      <h3>🌍 Full Stack Development</h3>
+      <p>HTML, CSS, JavaScript, React, Node, MongoDB.</p>
+      <span>Career Path | Projects Included</span>
+    </a>
+  </section>
+
+  <section class="cta">
+    <h3>🎯 Ready to Learn More?</h3>
+    <a href="dashboard.html">Go to Dashboard</a>
+  </section>
+
+  <footer>
+    &copy; 2025 CodeForCampus. All rights reserved.
+  </footer>
+
+  <script>
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.tutorial-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.getAttribute('data-category');
+
+        cards.forEach(card => {
+          if (category === 'all' || card.classList.contains(category)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

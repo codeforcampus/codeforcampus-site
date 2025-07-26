@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Certification Overview | CodeForCampus</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #eaf3ff, #f9fbff);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(90deg, #007BFF, #3399ff);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+
+    h2 {
+      font-size: 2.3rem;
+      text-align: center;
+      color: #007BFF;
+      margin-bottom: 12px;
+    }
+
+    .description {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 850px;
+      margin: 0 auto 50px;
+      line-height: 1.8;
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: #0056b3;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-bottom: 80px;
+    }
+
+    .cert-card {
+      background: white;
+      border-radius: 16px;
+      padding: 30px 25px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-top: 6px solid #007BFF;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .cert-card h3 {
+      color: #007BFF;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .cert-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      margin-top: auto;
+    }
+
+    .cert-card button {
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 8px;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .enroll {
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .enroll:hover {
+      background-color: #0056b3;
+    }
+
+    .view {
+      background-color: #e6f0ff;
+      color: #007BFF;
+      border: 1px solid #007BFF;
+    }
+
+    .view:hover {
+      background-color: #d0e8ff;
+    }
+
+    .how-to {
+      margin-top: 30px;
+    }
+
+    .steps {
+      background: linear-gradient(to right, #f0f8ff, #ffffff);
+      border: 1px solid #cce4ff;
+      padding: 40px 30px;
+      border-radius: 18px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.04);
+    }
+
+    .steps h3 {
+      text-align: center;
+      font-size: 1.9rem;
+      color: #007BFF;
+      margin-bottom: 25px;
+    }
+
+    .steps p {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 25px;
+      font-size: 1.05rem;
+      color: #444;
+    }
+
+    .steps ol {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.9;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 40px 20px 20px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      h2 { font-size: 2rem; }
+      .cert-card h3 { font-size: 1.2rem; }
+      .steps h3 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CodeForCampus</h1>
+  </header>
+
+  <div class="container">
+    <h2>Certification Overview</h2>
+    <p class="description">
+      At <span class="highlight">CodeForCampus</span>, we believe in empowering students and professionals with verifiable proof of their learning journey.
+      Our certificates are designed to validate your knowledge and skills in various domains like programming, data science, web development, and more.
+      Every certificate you earn can be added to your resume, LinkedIn profile, or job applications.
+    </p>
+
+    <div class="cert-grid">
+      <!-- Course cards as before (C, C++, Python, etc.) -->
+      <!-- Keep your course cards unchanged here -->
+    </div>
+
+    <div class="how-to">
+      <div class="steps">
+        <h3>How to Earn a Certificate</h3>
+        <p>
+          Earning a certificate on CodeForCampus is simple and rewarding. Just follow these steps:
+        </p>
+        <ol>
+          <li><strong>Enroll</strong> in any course of your choice – it's free and open to everyone.</li>
+          <li><strong>Complete</strong> all lessons and interactive coding tasks at your own pace.</li>
+          <li><strong>Pass the final quiz</strong> or assignment to demonstrate your understanding.</li>
+          <li><strong>Instantly download</strong> your certificate or share it directly to LinkedIn or GitHub.</li>
+          <li><strong>Track progress</strong> from your dashboard and revisit material anytime for revision.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 CodeForCampus. All rights reserved.
+  </footer>
+

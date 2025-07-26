@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeForCampus | Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f1f7ff;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .hero {
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.4rem;
+      color: #1e3c72;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .service-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 30px;
+      text-align: left;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-left: 6px solid #1e3c72;
+      position: relative;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #1e3c72;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .service-card span {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #777;
+      font-style: italic;
+    }
+
+    .cta {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      padding: 50px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .cta h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      background: #fff;
+      color: #1e3c72;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .cta a:hover {
+      background: #f0f0f0;
+    }
+
+    footer {
+      background: #1e3c72;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CodeForCampus</h1>
+    <p>Empowering Learners. Supporting Educators. Transforming Campuses.</p>
+  </header>
+
+  <section class="hero">
+    <h2>📌 Discover Our Core Services</h2>
+    <p>We deliver high-quality education tools, mentorship, and certification programs tailored for individual learners, educators, and institutions to succeed in the tech world.</p>
+  </section>
+
+  <section class="services-grid">
+    <div class="service-card">
+      <h3>🎓 Interactive Online Courses</h3>
+      <p>Master coding skills with beginner-to-advanced tracks in HTML, CSS, JavaScript, Python, and DSA. Each course is project-based and easy to follow.</p>
+      <span>Self-paced | Project-based | Beginner Friendly</span>
+    </div>
+
+    <div class="service-card">
+      <h3>📜 Certificate Programs</h3>
+      <p>Get recognized with professional certificates after successful course completion. Each certificate is verifiable and sharable on LinkedIn.</p>
+      <span>Unique ID | Downloadable | Verified</span>
+    </div>
+
+    <div class="service-card">
+      <h3>👩‍🏫 Instructor Mentoring</h3>
+      <p>Receive help from real instructors via Q&A forums, live sessions, and mentorship programs. Boost your confidence with guided learning.</p>
+      <span>Live Help | Mentor Feedback | Personalized</span>
+    </div>
+
+    <div class="service-card">
+      <h3>🏫 Campus Engagement</h3>
+      <p>We collaborate with schools and colleges to host technical workshops, bootcamps, and campus ambassador programs.</p>
+      <span>Hackathons | Certification Drives | Live Events</span>
+    </div>
+
+    <div class="service-card">
+      <h3>💬 Tech Community</h3>
+      <p>Join our growing student and developer community to share your work, ask questions, and connect with like-minded peers.</p>
+      <span>Forums | Discord | Global Network</span>
+    </div>
+
+    <div class="service-card">
+      <h3>🛠️ Developer Tools</h3>
+      <p>Utilize in-browser code editors, compilers, playgrounds, and live preview tools designed to support hands-on learning right from the browser.</p>
+      <span>HTML/JS Editors | Quizzes | Instant Feedback</span>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h3>🎯 Ready to Get Started?</h3>
+    <a href="courses.html">Go to Your Dashboard</a>
+  </section>
+
+  <footer>
+    &copy; 2025 CodeForCampus. All rights reserved.
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeForCampus | Certificate Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #ffffff);
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    header {
+      background: #1e3c72;
+      color: #fff;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #e0e0e0;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: linear-gradient(to bottom, #fff, #e3f2fd);
+    }
+
+    .hero h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #1e3c72;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #555;
+      max-width: 650px;
+      margin: 0 auto 40px;
+    }
+
+    .certificate-preview {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      padding: 30px;
+      width: 90%;
+      max-width: 720px;
+      margin: 0 auto;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+    }
+
+    .certificate-preview:hover {
+      transform: scale(1.01);
+    }
+
+    .certificate-preview h3 {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      color: #1e3c72;
+    }
+
+    .certificate-preview img {
+      width: 100%;
+      max-width: 640px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .download-btn {
+      margin-top: 25px;
+      background-color: #1e3c72;
+      color: white;
+      padding: 14px 32px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(30, 60, 114, 0.3);
+    }
+
+    .download-btn:hover {
+      background-color: #2a5298;
+      transform: translateY(-2px);
+    }
+
+    .info-section {
+      background: #f5faff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .info-container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .info-container h3 {
+      font-size: 2rem;
+      color: #1e3c72;
+      margin-bottom: 25px;
+    }
+
+    .info-container ul {
+      text-align: left;
+      display: inline-block;
+      margin-bottom: 20px;
+      padding-left: 25px;
+    }
+
+    .info-container li {
+      margin: 12px 0;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    .info-container .note {
+      font-style: italic;
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    .dashboard-section {
+      text-align: center;
+      padding: 50px 20px;
+      background: #fff;
+    }
+
+    .dashboard-section h4 {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: #1e3c72;
+    }
+
+    .dashboard-link {
+      display: inline-block;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      padding: 14px 34px;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 12px rgba(30, 60, 114, 0.2);
+    }
+
+    .dashboard-link:hover {
+      background: linear-gradient(to right, #16305d, #244b87);
+      transform: translateY(-2px);
+    }
+
+    .verify-section {
+      margin: 70px auto;
+      max-width: 600px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.85);
+      border-radius: 16px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .verify-section h4 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #1e3c72;
+    }
+
+    .verify-section input {
+      padding: 12px 16px;
+      width: 80%;
+      max-width: 400px;
+      border: 2px solid #1e3c72;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .verify-section input:focus {
+      border-color: #2a5298;
+    }
+
+    .verify-section button {
+      background-color: #1e3c72;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 8px rgba(30, 60, 114, 0.3);
+    }
+
+    .verify-section button:hover {
+      background-color: #2a5298;
+    }
+
+    footer {
+      background: #1e3c72;
+      color: #fff;
+      text-align: center;
+      padding: 25px;
+      margin-top: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 1.6rem;
+      }
+
+      .verify-section input {
+        width: 95%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CodeForCampus</h1>
+    <p>Get Certified. Get Verified. Get Hired.</p>
+  </header>
+
+  <section class="hero">
+    <h2>Showcase Your Skills with a Verified Certificate</h2>
+    <p>Earn certificates after completing tutorials and courses. Use the certificate ID below to verify authenticity.</p>
+
+    <div class="certificate-preview">
+      <h3>Certificate Preview</h3>
+      <img src="https://codeforcampus.com/assets/certificate-template.png" alt="CodeForCampus Certificate Template" />
+      <br><button class="download-btn" onclick="downloadCertificate()">⬇ Download Certificate</button>
+    </div>
+  </section>
+
+  <section class="info-section">
+    <div class="info-container">
+      <h3>📚 How to Earn a Certificate</h3>
+      <ul>
+        <li><strong>Step 1:</strong> Enroll in any course or tutorial on CodeForCampus.</li>
+        <li><strong>Step 2:</strong> Complete all the lessons and exercises included in the course.</li>
+        <li><strong>Step 3:</strong> Pass the final quiz or assessment with at least 70% score.</li>
+        <li><strong>Step 4:</strong> Instantly receive your downloadable certificate with a unique ID.</li>
+        <li><strong>Step 5:</strong> Share your certificate on LinkedIn, resumes, or portfolios.</li>
+      </ul>
+      <p class="note">🔒 Each certificate has a unique ID to verify authenticity and is securely issued by our platform.</p>
+    </div>
+  </section>
+
+  <section class="dashboard-section">
+    <h4>🎯 Ready to continue learning?</h4>
+    <a href="https://codeforcampus.com/dashboard" class="dashboard-link">Go to Course Dashboard →</a>
+  </section>
+
+  <section class="verify-section">
+    <h4>🔍 Verify Your Certificate</h4>
+    <input type="text" placeholder="Enter Certificate ID" id="certIdInput">
+    <br>
+    <button onclick="verifyCertificate()">Verify</button>
+  </section>
+
+  <footer>
+    &copy; 2025 CodeForCampus | All Rights Reserved
+  </footer>
+
+  <script>
+    function downloadCertificate() {
+      const link = document.createElement('a');
+      link.href = 'https://codeforcampus.com/assets/certificate-template.png';
+      link.download = 'CodeForCampus-Certificate.png';
+      link.click();
+    }
+
+    function verifyCertificate() {
+      const certId = document.getElementById('certIdInput').value.trim();
+      if (certId) {
+        alert(`Verifying certificate ID: ${certId}... (connect this to a backend later)`);
+      } else {
+        alert("Please enter a certificate ID.");
+      }
+    }
+  </script>
+
+</body>
+</html>
