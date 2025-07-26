@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction to HTML</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f9;
+      color: #333;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2rem;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      color: #2c3e50;
+      border-left: 4px solid #3498db;
+      padding-left: 10px;
+      margin-top: 2rem;
+    }
+
+    .intro {
+      background-color: #ecf9ff;
+      border-left: 5px solid #00bcd4;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .intro p {
+      margin: 0.5rem 0;
+    }
+
+    ul {
+      list-style: disc inside;
+      margin-bottom: 1.5rem;
+    }
+
+    .code-block {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      font-family: monospace;
+      border-radius: 5px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    code {
+      background-color: #e8e8e8;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .note {
+      background-color: #fff3cd;
+      padding: 1rem;
+      border-left: 5px solid #ffc107;
+      margin: 1rem 0;
+      border-radius: 4px;
+    }
+
+    .quick-facts, .did-you-know {
+      background-color: #e3f2fd;
+      padding: 1rem;
+      border-left: 4px solid #2196f3;
+      margin-bottom: 1.5rem;
+      border-radius: 4px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 400px;
+      margin-bottom: 2rem;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 5px 0;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #2980b9;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      iframe {
+        height: 250px;
+      }
+
+      .nav-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        margin-bottom: 10px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Learn HTML: Introduction</h1>
+
+    <!-- ✨ New Engaging Intro Block -->
+    <div class="intro">
+      <p><strong>HTML (HyperText Markup Language)</strong> is the backbone of every webpage on the internet. It's what gives content its structure and meaning — from headings and paragraphs to links, images, and videos.</p>
+      <p>Whether you're building a personal blog, a corporate site, or a complex web app, your journey starts here — with HTML.</p>
+    </div>
+
+    <h2>What is HTML?</h2>
+    <ul>
+      <li>HTML stands for <strong>HyperText Markup Language</strong></li>
+      <li>It’s the standard markup language used to create web pages</li>
+      <li>It describes the structure of content using elements and tags</li>
+      <li>It works hand-in-hand with CSS and JavaScript</li>
+    </ul>
+
+    <h2>Where is HTML Used?</h2>
+    <ul>
+      <li>Websites and blogs</li>
+      <li>Email templates</li>
+      <li>Mobile app interfaces (with frameworks)</li>
+      <li>eCommerce and CMS platforms</li>
+      <li>Online forms and interactive tools</li>
+    </ul>
+
+    <h2>A Simple HTML Document</h2>
+    <div class="code-block">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+  &nbsp;&nbsp;&lt;head&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;My First Page&lt;/title&gt;<br>
+  &nbsp;&nbsp;&lt;/head&gt;<br>
+  &nbsp;&nbsp;&lt;body&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello World&lt;/h1&gt;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;This is a paragraph.&lt;/p&gt;<br>
+  &nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;
+    </div>
+    <a href="tryit.html" class="btn">Try it Yourself</a>
+
+    <h2>What is an HTML Element?</h2>
+    <p>An HTML element is defined by a start tag, content, and an end tag:</p>
+    <div class="code-block">
+&lt;tagname&gt;Content goes here...&lt;/tagname&gt;
+    </div>
+
+    <h2>Example Elements</h2>
+    <ul>
+      <li><code>&lt;h1&gt;My First Heading&lt;/h1&gt;</code></li>
+      <li><code>&lt;p&gt;My first paragraph.&lt;/p&gt;</code></li>
+    </ul>
+
+    <div class="note">
+      <strong>Note:</strong> HTML tags are not case-sensitive. However, lowercase is preferred for consistency and readability.
+    </div>
+
+    <h2>HTML Page Structure</h2>
+    <div class="code-block">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;This is a heading&lt;/h1&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;This is a paragraph.&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;
+    </div>
+
+    <h2>Why Learn HTML?</h2>
+    <ul>
+      <li>It’s the first step in web development</li>
+      <li>You can build static websites quickly</li>
+      <li>It forms the base for learning CSS, JS, and frameworks</li>
+      <li>In-demand skill for jobs and freelance work</li>
+    </ul>
+
+    <h2>Quick Facts</h2>
+    <div class="quick-facts">
+      <ul>
+        <li>Invented by Tim Berners-Lee in 1991</li>
+        <li>HTML5 is the latest version (released in 2014)</li>
+        <li>Used by over 95% of websites globally</li>
+      </ul>
+    </div>
+
+    <h2>Did You Know?</h2>
+    <div class="did-you-know">
+      <ul>
+        <li>You can embed audio and video directly using HTML5</li>
+        <li>HTML works without needing any special software — just a browser and a text editor</li>
+        <li>Many job interviews for web dev start with HTML basics</li>
+      </ul>
+    </div>
+
+    <h2>HTML History</h2>
+    <ul>
+      <li>1991: HTML introduced by Tim Berners-Lee</li>
+      <li>1995: HTML 2.0 standardized</li>
+      <li>1997: HTML 4.0 released</li>
+      <li>2014: HTML5 finalized by W3C</li>
+    </ul>
+
+    <h2>Exercise</h2>
+    <p><strong>What does HTML stand for?</strong></p>
+    <ul>
+      <li>✓ HyperText Markup Language</li>
+      <li>✗ Home Tool Markup Language</li>
+      <li>✗ Hyperlink and Text Markup Language</li>
+    </ul>
+
+    <h2>Video: HTML Introduction</h2>
+    <iframe src="https://www.youtube.com/embed/qz0aGYrrlhU" allowfullscreen></iframe>
+
+    <div class="nav-buttons">
+      <a class="btn" href="html_home.html">❮ Previous</a>
+      <a class="btn" href="html_editors.html">Next ❯</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HTML Course - LearnCodeHub</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      background: #f8fafc;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background-color: #e2e8f0;
+      height: 100vh;
+      overflow-y: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding-top: 1rem;
+    }
+
+    .sidebar h2 {
+      padding: 1rem;
+      background-color: #38bdf8;
+      color: white;
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #1e293b;
+      text-decoration: none;
+      border-left: 4px solid transparent;
+      transition: background 0.3s, border-left 0.3s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #cbd5e1;
+      border-left: 4px solid #0ea5e9;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 260px;
+      padding: 2rem;
+      flex: 1;
+    }
+
+    .lesson-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>HTML Tutorial</h2>
+    <a href="#">HTML HOME</a>
+    <a href="html_introduction.html" target="_blank">HTML Introduction</a>
+    <a href="html_editors.html" target="_blank">HTML Editors</a>
+    <a href="#">HTML Basic</a>
+    <a href="html_elements.html" target="_blank">HTML Elements</a>
+    <a href="#">HTML Attributes</a>
+    <a href="#">HTML Headings</a>
+    <a href="#">HTML Paragraphs</a>
+    <a href="#">HTML Styles</a>
+    <a href="#">HTML Formatting</a>
+    <a href="#">HTML Colors</a>
+    <a href="#">HTML CSS</a>
+    <a href="#">HTML Links</a>
+    <a href="#">HTML Images</a>
+    <a href="#">HTML Favicon</a>
+    <a href="#">HTML Page Title</a>
+    <a href="#">HTML Tables</a>
+    <a href="#">HTML Lists</a>
+    <a href="#">HTML Block & Inline</a>
+    <a href="#">HTML Div</a>
+  </div>
+
+  <div class="main-content">
+    <div class="lesson-box">
+      <h1>Welcome to HTML Course</h1>
+      <p>Select a lesson from the sidebar to begin.</p>
+    </div>
+  </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Course Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f2f6fc;
+      color: #2c3e50;
+      overflow-x: hidden;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(135deg, #2980b9, #3498db);
+      color: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin: 0 0 0.5rem 0;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      margin: 0 0 1.2rem 0;
+    }
+
+    .header .cta {
+      background-color: #fff;
+      color: #3498db;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .header .cta:hover {
+      background-color: #ecf0f1;
+    }
+
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      border-left: 6px solid #3498db;
+      padding-left: 1rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+
+    .highlight-section {
+      background-color: #e8f4fd;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+
+    .highlight-section h2 {
+      font-size: 2rem;
+      color: #1a73e8;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-section p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+
+    .highlight-section .cta {
+      background-color: #1a73e8;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .highlight-section .cta:hover {
+      background-color: #155cb0;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background-color: #eaf1f8;
+      font-size: 0.9rem;
+      color: #7f8c8d;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>Welcome to Learn HTML</h1>
+    <p>Master the foundation of the web — one tag at a time.</p>
+    <button class="cta" onclick="location.href='html_intro.html'">Start Learning</button>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Why Learn HTML?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Universal Web Language</h3>
+        <p>HTML is the language every website uses. It’s essential for all front-end development.</p>
+      </div>
+      <div class="card">
+        <h3>Easy to Start</h3>
+        <p>Even beginners can quickly pick up HTML and build real websites.</p>
+      </div>
+      <div class="card">
+        <h3>Foundation for CSS & JS</h3>
+        <p>Before diving into modern frameworks, you must understand HTML structure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">What You’ll Learn</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>HTML Basics</h3>
+        <p>Tags, elements, and how to structure your content for the web.</p>
+      </div>
+      <div class="card">
+        <h3>Forms & Inputs</h3>
+        <p>Learn to collect data from users with inputs, buttons, and more.</p>
+      </div>
+      <div class="card">
+        <h3>Embedding Media</h3>
+        <p>Include videos, images, audio, and more into your web pages.</p>
+      </div>
+      <div class="card">
+        <h3>Page Layout</h3>
+        <p>Understand semantic HTML and how to structure professional layouts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Student Success Tips</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Practice Regularly</h3>
+        <p>Apply what you learn after every lesson to build confidence and skills.</p>
+      </div>
+      <div class="card">
+        <h3>Explore Code Examples</h3>
+        <p>Interact with live code snippets to understand syntax better.</p>
+      </div>
+      <div class="card">
+        <h3>Build Projects</h3>
+        <p>Start small — build a portfolio, personal blog, or landing page as you learn.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="highlight-section">
+    <h2>Ready to Launch Your First Web Page?</h2>
+    <p>Don’t just read about HTML — build with it! Click below to jump into a live coding environment and create your very first HTML document.</p>
+    <button class="cta" onclick="location.href='live.html'">Let's Code</button>
+  </section>
+
+  <footer class="footer">
+    © 2025 Learn HTML — Built to teach the web to the world.
+  </footer>
+</body>
+</html>
