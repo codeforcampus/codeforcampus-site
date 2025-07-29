@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>8. Recommendation Systems - Machine Learning Course</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8fafc;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #1d4ed8;
+      margin-top: 40px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: #0f172a;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    .highlight, .key-points {
+      background-color: #e0f2fe;
+      padding: 12px 15px;
+      border-left: 5px solid #0284c7;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+
+    code {
+      background-color: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e0f2fe;
+      color: #0369a1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>8. Recommendation Systems</h1>
+    <p>Recommendation systems suggest relevant content to users based on historical interactions, user behavior, or content similarity. These systems drive user engagement across streaming platforms, e-commerce sites, and social media.</p>
+
+    <h2 id="collaborative">8.1 Collaborative Filtering</h2>
+    <p>Collaborative Filtering relies on historical user-item interactions. It assumes that users with similar preferences in the past will continue to share tastes.</p>
+
+    <h3 id="matrix">8.1.1 Matrix Factorization</h3>
+    <p>This technique decomposes the large sparse user-item rating matrix into two lower-dimensional matrices: user features and item features.</p>
+    <div class="highlight">
+      <code>predicted_rating = user_vector · item_vector</code>
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Captures latent factors like genre, price, or brand preferences</li>
+        <li>Reduces dimensionality of interaction data</li>
+        <li>Used in systems like Netflix and Amazon</li>
+      </ul>
+    </div>
+
+    <h3 id="gd">8.1.2 Gradient Descent</h3>
+    <p>Used to minimize the prediction error in matrix factorization using a loss function with regularization to avoid overfitting.</p>
+    <div class="highlight">
+      <code>L = Σ(R_ui - U_u · V_i)^2 + λ (||U_u||² + ||V_i||²)</code>
+    </div>
+    <ul>
+      <li>R_ui: Real user rating</li>
+      <li>U_u and V_i: Latent vectors</li>
+      <li>λ: Regularization parameter</li>
+    </ul>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Optimizes user/item vectors to reduce prediction error</li>
+        <li>Gradient Descent is iterative and scalable</li>
+        <li>Regularization prevents overfitting</li>
+      </ul>
+    </div>
+
+    <h3 id="applications">8.1.3 Applications</h3>
+    <ul>
+      <li>Movie streaming platforms recommending based on similar users' ratings</li>
+      <li>E-commerce suggesting items bought together</li>
+      <li>Social networks recommending friends or connections</li>
+    </ul>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Most effective when user interaction history is rich</li>
+        <li>Requires large datasets to perform well</li>
+        <li>Struggles with new users or new items (cold start)</li>
+      </ul>
+    </div>
+
+    <h2 id="content">8.2 Content-Based Filtering</h2>
+    <p>Instead of relying on user interactions, this method recommends items with similar characteristics to those the user already liked.</p>
+
+    <h3 id="feature-vectors">8.2.1 Feature Vectors</h3>
+    <p>Items are represented using structured features like genre, price, brand, or keywords.</p>
+    <div class="highlight">
+      <code>[Genre=Action, Rating=4.5, Runtime=120]</code>
+    </div>
+    <p>User profile is derived by averaging features of previously liked items.</p>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Uses explicit item features to drive recommendations</li>
+        <li>Good for users with limited interaction history</li>
+        <li>Does not require information from other users</li>
+      </ul>
+    </div>
+
+    <h3 id="neural">8.2.2 Neural Networks</h3>
+    <p>Advanced models like deep neural networks can learn complex user-item relationships using embeddings and dense layers.</p>
+    <ul>
+      <li>Use input features like reviews, categories, and images</li>
+      <li>Train to predict relevance scores</li>
+    </ul>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Powerful for high-dimensional and unstructured data</li>
+        <li>Requires large labeled datasets</li>
+        <li>Supports personalization at scale</li>
+      </ul>
+    </div>
+
+    <h3 id="similarity">8.2.3 Similarity</h3>
+    <p>Measures like cosine similarity and Euclidean distance determine how alike two items are.</p>
+    <div class="highlight">
+      <code>cosine_similarity(A, B) = (A · B) / (||A|| * ||B||)</code>
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Core technique in content-based filtering</li>
+        <li>Simple and interpretable</li>
+        <li>Fast computation for small/medium-sized datasets</li>
+      </ul>
+    </div>
+
+    <h2 id="hybrid">8.3 Hybrid Approach</h2>
+    <p>The hybrid method merges collaborative and content-based filtering to overcome limitations of each individual approach.</p>
+    <ul>
+      <li>Combine scores or rankings from both systems</li>
+      <li>Use meta-learners or weighted models</li>
+    </ul>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Balances cold start and personalization</li>
+        <li>More accurate and robust than standalone methods</li>
+        <li>Widely used in production systems like Netflix and Spotify</li>
+      </ul>
+    </div>
+
+    <table>
+      <tr>
+        <th>Technique</th>
+        <th>Description</th>
+        <th>Strengths</th>
+      </tr>
+      <tr>
+        <td>Collaborative Filtering</td>
+        <td>Uses user-item interactions to recommend</td>
+        <td>Highly personalized, scalable</td>
+      </tr>
+      <tr>
+        <td>Content-Based Filtering</td>
+        <td>Recommends based on item features</td>
+        <td>Works well for new users or unique interests</td>
+      </tr>
+      <tr>
+        <td>Hybrid Approach</td>
+        <td>Combines collaborative and content methods</td>
+        <td>Improved accuracy, solves cold-start issues</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>
