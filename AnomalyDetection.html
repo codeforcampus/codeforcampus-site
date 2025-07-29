@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>7. Anomaly Detection - Machine Learning Course</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f8fafc;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #1e40af;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #1d4ed8;
+      margin-top: 40px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      color: #0f172a;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    ul {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    .highlight {
+      background-color: #e0f2fe;
+      padding: 12px 15px;
+      border-left: 5px solid #0284c7;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+
+    code {
+      background-color: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #e0f2fe;
+      color: #0369a1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>7. Anomaly Detection</h1>
+    <p>Anomaly Detection involves identifying rare or unusual data points that deviate significantly from the norm. It is an unsupervised learning task because we typically don't have labels indicating which examples are anomalies. It is used in scenarios where catching unexpected behavior is critical, such as fraud prevention, fault detection, and cybersecurity.</p>
+
+    <h2 id="gaussian">7.1 Gaussian Distribution</h2>
+    <h3>📘 What is a Gaussian Distribution?</h3>
+    <p>The <strong>Gaussian Distribution</strong> (Normal Distribution) is a continuous probability distribution that is symmetric around the mean. Most real-world datasets exhibit behavior that closely approximates this bell curve due to the Central Limit Theorem.</p>
+
+    <div class="highlight">
+      <strong>Formula:</strong><br/>
+      <code>p(x) = (1 / √(2πσ²)) * exp( - (x - μ)² / (2σ²) )</code>
+    </div>
+
+    <ul>
+      <li><strong>μ (mu)</strong>: Mean (average value)</li>
+      <li><strong>σ² (sigma squared)</strong>: Variance (spread of data)</li>
+    </ul>
+
+    <p>We assume each feature in the dataset follows a Gaussian distribution. This allows us to model the likelihood of each feature value individually.</p>
+
+    <h3>🧮 How to compute p(x):</h3>
+    <ul>
+      <li>Estimate <code>μ</code> and <code>σ²</code> for each feature using training data</li>
+      <li>Compute probability <code>p(x)</code> for each example</li>
+      <li>If <code>p(x) &lt; ε</code>, mark it as an anomaly</li>
+    </ul>
+
+    <div class="highlight">
+      <strong>Example:</strong> If the average server CPU temperature is 70°C with a σ = 5, then 95°C is highly unlikely under normal conditions — indicating a potential anomaly.
+    </div>
+
+    <p><strong>Note:</strong> For datasets with multiple correlated features, use a <em>multivariate Gaussian distribution</em> instead of assuming independence between variables.</p>
+
+    <h2 id="epsilon">7.2 Threshold (Epsilon)</h2>
+    <h3>🧮 What is Epsilon?</h3>
+    <p><strong>Epsilon (ε)</strong> is the anomaly threshold. It is the cut-off value for p(x). If a data point's probability is lower than ε, it is considered anomalous.</p>
+
+    <ul>
+      <li>If <code>p(x) &lt; ε</code> → data is likely anomalous</li>
+      <li>If <code>p(x) ≥ ε</code> → data is likely normal</li>
+    </ul>
+
+    <h3>📊 Choosing Epsilon:</h3>
+    <p>Use a labeled validation set to test different ε values. For each value, calculate the F1 score — a balance between precision and recall — and choose the one that maximizes this score.</p>
+
+    <div class="highlight">
+      <strong>Trade-off:</strong><br/>
+      - Lower ε → Detects more anomalies (but may cause more false alarms)<br/>
+      - Higher ε → More precision (but may miss real anomalies)
+    </div>
+
+    <h2 id="usecases">7.3 Use Cases</h2>
+    <p>Some practical applications of anomaly detection include:</p>
+    <ul>
+      <li><strong>Fraud Detection</strong>: Catch abnormal transactions in banking or e-commerce</li>
+      <li><strong>Cybersecurity</strong>: Identify unusual login locations, traffic spikes, or access patterns</li>
+      <li><strong>Manufacturing</strong>: Detect machine breakdowns or sensor anomalies</li>
+      <li><strong>Healthcare</strong>: Identify unusual heart rate, temperature, or blood pressure patterns</li>
+      <li><strong>Finance</strong>: Spot irregular market behavior or trading patterns</li>
+    </ul>
+
+    <h3>🚀 Steps to Implement Anomaly Detection:</h3>
+    <ol>
+      <li>Collect normal (non-anomalous) training data</li>
+      <li>Estimate μ and σ² for each feature</li>
+      <li>Compute p(x) for each example</li>
+      <li>Select ε using a validation set</li>
+      <li>Predict anomalies: if p(x) < ε → anomaly</li>
+    </ol>
+
+    <table>
+      <tr>
+        <th>Topic</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>Gaussian Distribution</td>
+        <td>Models feature probability using mean and variance</td>
+      </tr>
+      <tr>
+        <td>Epsilon Threshold</td>
+        <td>Used to classify data points as normal or anomalous</td>
+      </tr>
+      <tr>
+        <td>Use Cases</td>
+        <td>Applies to security, health, fraud, finance, and industry</td>
+      </tr>
+      <tr>
+        <td>Algorithm Steps</td>
+        <td>Estimate distribution → compute p(x) → choose ε → detect anomalies</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>
