@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Module 6: Unsupervised Learning</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+      color: #1f2937;
+    }
+
+    .main {
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #1e3a8a;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #3b82f6;
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-top: 40px;
+      color: #2563eb;
+      border-left: 6px solid #3b82f6;
+      padding-left: 12px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    ul {
+      margin: 12px 0 20px 25px;
+      list-style-type: disc;
+    }
+
+    ul li {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .highlight {
+      background-color: #f0f9ff;
+      border-left: 5px solid #3b82f6;
+      padding: 14px 18px;
+      margin: 20px 0;
+      border-radius: 6px;
+      color: #0f172a;
+    }
+
+    .highlight ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    strong {
+      color: #1d4ed8;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main">
+    <h1>6. Unsupervised Learning</h1>
+
+    <!-- 6.1 Clustering -->
+    <section id="clustering">
+      <h2>6.1 Clustering</h2>
+      <p><strong>Definition:</strong> Clustering is an unsupervised learning technique that groups similar data points into clusters without labeled data.</p>
+      <p><strong>Explanation:</strong> It helps discover hidden patterns or groupings in data and is widely used in customer segmentation, social network analysis, and image compression.</p>
+
+      <div class="highlight">
+        🧾 <strong>Examples:</strong><br>
+        - Grouping news articles by topic.<br>
+        - Segmenting customers by purchasing behavior.
+      </div>
+
+      <div class="highlight">
+        💡 <strong>Key Points:</strong>
+        <ul>
+          <li>No labeled data required.</li>
+          <li>Output is groups/clusters with high intra-group similarity.</li>
+          <li>Popular algorithms: K-Means, DBSCAN, Hierarchical.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6.1.1 K-Means -->
+    <section id="kmeans">
+      <h2>6.1.1 K-Means</h2>
+      <p><strong>Definition:</strong> K-Means is a centroid-based clustering algorithm that partitions data into K clusters based on proximity to cluster centers.</p>
+      <p><strong>Explanation:</strong> The algorithm minimizes intra-cluster distances by assigning each point to the nearest centroid and then recalculating centroids until convergence.</p>
+
+      <div class="highlight">
+        🧾 <strong>Examples:</strong><br>
+        - Customer segmentation in marketing.<br>
+        - Image color quantization.
+      </div>
+
+      <div class="highlight">
+        📊 <strong>Facts:</strong><br>
+        - Requires K to be predefined.<br>
+        - Sensitive to initial centroids.<br>
+        - Fast and scalable.
+      </div>
+    </section>
+
+    <!-- 6.1.1.1 Elbow Method -->
+    <section id="elbow">
+      <h2>6.1.1.1 Elbow Method</h2>
+      <p><strong>Definition:</strong> The Elbow Method is a technique to find the optimal number of clusters (K) by plotting within-cluster variance versus number of clusters.</p>
+
+      <div class="highlight">
+        🧾 <strong>Example:</strong><br>
+        - Used in K-Means to determine the ideal K in customer segmentation.
+      </div>
+
+      <div class="highlight">
+        💡 Look for the "elbow point" where adding more clusters doesn’t significantly reduce the variance.
+      </div>
+    </section>
+
+    <!-- 6.1.1.2 K-Means++ -->
+    <section id="kmeanspp">
+      <h2>6.1.1.2 K-Means++</h2>
+      <p><strong>Definition:</strong> K-Means++ is an enhanced version of K-Means that improves the initial centroid selection to avoid poor clustering results.</p>
+
+      <div class="highlight">
+        🧾 <strong>Example:</strong><br>
+        - Used in clustering large-scale location data with better consistency.
+      </div>
+
+      <div class="highlight">
+        📊 Improves convergence and clustering accuracy over standard K-Means.
+      </div>
+    </section>
+
+    <!-- 6.1.2 Hierarchical Clustering -->
+    <section id="hierarchical">
+      <h2>6.1.2 Hierarchical Clustering</h2>
+      <p><strong>Definition:</strong> Hierarchical clustering builds a tree of clusters by either merging or splitting them recursively.</p>
+
+      <div class="highlight">
+        🧾 <strong>Example:</strong><br>
+        - Taxonomy of species.<br>
+        - Document categorization.
+      </div>
+
+      <div class="highlight">
+        💡 Doesn’t require predefining K and creates dendrograms for visualization.
+      </div>
+    </section>
+
+    <!-- 6.1.2.1 Agglomerative -->
+    <section id="agglomerative">
+      <h2>6.1.2.1 Agglomerative Clustering</h2>
+      <p><strong>Definition:</strong> A bottom-up approach where each data point starts as its own cluster, and pairs of clusters are merged as one moves up the hierarchy.</p>
+    <div class="highlight">
+    🧾 <strong>Example:</strong><br>
+    - Grouping species by genetic similarity in biology.<br>
+    - Merging social network users based on mutual friends.
+  </div>
+
+  <div class="highlight">
+    💡 <strong>Key Points:</strong>
+    <ul>
+      <li>Does not require specifying the number of clusters (K).</li>
+      <li>Produces a dendrogram to visualize cluster merging.</li>
+      <li>Slower than K-Means on large datasets due to repeated distance calculations.</li>
+    </ul>
+  </div>
+
+    </section>
+
+    <!-- 6.1.2.2 Divisive -->
+    <section id="divisive">
+      <h2>6.1.2.2 Divisive Clustering</h2>
+      <p><strong>Definition:</strong> A top-down approach that starts with all data in one cluster and recursively splits it into smaller clusters.</p>
+    <div class="highlight">
+    🧾 <strong>Example:</strong><br>
+    - Separating academic departments from a university-wide dataset.<br>
+    - Breaking down a customer base from general to specific segments.
+  </div>
+
+  <div class="highlight">
+    💡 <strong>Key Points:</strong>
+    <ul>
+      <li>Opposite of agglomerative — starts big and splits downward.</li>
+      <li>Less commonly used due to higher computational complexity.</li>
+      <li>Useful when the natural grouping is known to start large.</li>
+    </ul>
+  </div>
+
+    </section>
+
+
+    <!-- 6.1.2.3 Dendrograms -->
+    <section id="dendrograms">
+      <h2>6.1.2.3 Dendrograms</h2>
+      <p><strong>Definition:</strong> A dendrogram is a tree-like diagram that records the sequences of merges or splits in hierarchical clustering.</p>
+    <div class="highlight">
+    🧾 <strong>Example:</strong><br>
+    - Visualizing how different types of wines group based on taste features.<br>
+    - Showing user communities in a social media clustering analysis.
+  </div>
+
+  <div class="highlight">
+    💡 <strong>Key Points:</strong>
+    <ul>
+      <li>Shows the entire clustering process and merging steps.</li>
+      <li>Cutting the dendrogram at a specific height reveals K clusters.</li>
+      <li>Helps evaluate natural grouping and hierarchy in the data.</li>
+    </ul>
+  </div>
+</section>
+
+    </section>
+
+    <!-- 6.2 Association -->
+    <section id="association">
+      <h2>6.2 Association</h2>
+      <p><strong>Definition:</strong> Association learning is a rule-based machine learning method for discovering interesting relations between variables in large datasets.</p>
+
+      <p><strong>Explanation:</strong> It finds frequent patterns, associations, or correlations in data. Often used for market basket analysis to find products bought together.</p>
+
+      <div class="highlight">
+        🧾 <strong>Examples:</strong><br>
+        - "People who buy bread often buy butter."<br>
+        - Amazon recommendation rules.
+      </div>
+
+      <div class="highlight">
+        💡 <strong>Key Points:</strong>
+        <ul>
+          <li>Uses support, confidence, and lift to evaluate rules.</li>
+          <li>Apriori and FP-Growth are common algorithms.</li>
+          <li>Highly interpretable rules.</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+</body>
+</html>

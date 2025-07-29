@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Machine Learning</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --accent: #38bdf8;
+            --sidebar-bg: #1e293b;
+            --sidebar-link: #f1f5f9;
+            --sidebar-hover: #2563eb;
+            --main-bg: #f8fafc;
+            --main-content-bg: #fff;
+            --shadow: 0 4px 24px rgba(30, 64, 175, 0.08);
+            --radius: 14px;
+            --transition: 0.25s cubic-bezier(.4,0,.2,1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--main-bg);
+            color: #222;
+            min-height: 100vh;
+        }
+        .header {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: #fff;
+            padding: 1.2rem 2rem;
+            text-align: center;
+            position: relative;
+            box-shadow: var(--shadow);
+            z-index: 10;
+        }
+        #menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            position: absolute;
+            left: 1.2rem;
+            top: 1.2rem;
+            cursor: pointer;
+            z-index: 20;
+            transition: color var(--transition);
+        }
+        #menu-toggle:hover {
+            color: var(--accent);
+        }
+        .layout {
+            display: flex;
+            min-height: 100vh;
+            align-items: flex-start;
+        }
+        .sidebar {
+            width: 270px;
+            background: var(--sidebar-bg);
+            color: var(--sidebar-link);
+            padding: 2.2rem 1.2rem 2rem 1.2rem;
+            min-height: 100vh;
+            box-shadow: 2px 0 16px rgba(30, 64, 175, 0.07);
+            transition: transform var(--transition);
+            position: relative;
+            z-index: 11;
+        }
+        .sidebar h3 {
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            color: var(--accent);
+        }
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .sidebar li {
+            margin: 0.5rem 0;
+        }
+        .sidebar a {
+            color: var(--sidebar-link);
+            text-decoration: none;
+            display: block;
+            padding: 0.45rem 0.8rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: background var(--transition), color var(--transition);
+            cursor: pointer;
+        }
+        .sidebar a:hover, .sidebar a:focus {
+            background: var(--sidebar-hover);
+            color: #fff;
+        }
+        .sidebar ul ul {
+            padding-left: 1.2rem;
+            font-size: 0.97rem;
+            display: none;
+        }
+        .sidebar li.open > ul {
+            display: block;
+        }
+        .main-content {
+            flex: 1;
+            padding: 2.5rem 2.5rem 2rem 2.5rem;
+            background: var(--main-content-bg);
+            border-radius: var(--radius);
+            margin: 2.5rem 2.5rem 2.5rem 0;
+            box-shadow: var(--shadow);
+            min-width: 0;
+            min-height: 80vh;
+            transition: box-shadow var(--transition);
+        }
+        .main-content h2 {
+            color: var(--primary-dark);
+            border-left: 6px solid var(--primary);
+            padding-left: 1.2rem;
+            font-size: 2.1rem;
+            margin-bottom: 2rem;
+            margin-top: 0.5rem;
+            letter-spacing: 1px;
+        }
+        .main-content h3 {
+            color: var(--primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            letter-spacing: 0.5px;
+        }
+        .main-content p {
+            font-size: 1.13rem;
+            margin-bottom: 1.1rem;
+            line-height: 1.7;
+        }
+        .main-content ul {
+            background: #e0e7ff;
+            padding: 1.1rem 1.7rem;
+            border-radius: 9px;
+            list-style: square inside;
+            line-height: 1.6;
+            margin: 1.2rem 0;
+            color: #222;
+        }
+        .main-content ul li::marker {
+            color: var(--primary);
+        }
+        .note {
+            background: #fef9c3;
+            padding: 1.1rem 1.2rem;
+            border-left: 6px solid #facc15;
+            border-radius: 9px;
+            margin-top: 2.2rem;
+            font-size: 1.05rem;
+            color: #7c6f1e;
+            box-shadow: 0 2px 8px rgba(250, 204, 21, 0.07);
+        }
+        .facts {
+            background: #f0fdf4;
+            border-left: 6px solid #22c55e;
+            border-radius: 9px;
+            padding: 1.1rem 1.2rem;
+            margin: 2rem 0 1.5rem 0;
+            color: #166534;
+            font-size: 1.05rem;
+            box-shadow: 0 2px 8px rgba(34, 197, 94, 0.07);
+        }
+        .pros-cons {
+            display: flex;
+            gap: 2rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .pros-cons > div {
+            flex: 1 1 250px;
+            background: #f1f5f9;
+            border-radius: 9px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 2px 8px rgba(30, 64, 175, 0.04);
+        }
+        .pros-cons h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.7rem;
+            font-size: 1.1rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 1.2rem;
+            background: #e0e7ef;
+            font-size: 1rem;
+            color: #555;
+            letter-spacing: 0.5px;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 2rem;
+        }
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .main-content {
+                margin: 2rem 1rem 2rem 0;
+                padding: 1.5rem 1rem 1.5rem 1rem;
+            }
+            .sidebar {
+                width: 210px;
+                padding: 1.5rem 0.7rem;
+            }
+            .pros-cons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: absolute;
+                top: 64px;
+                left: 0;
+                height: calc(100% - 64px);
+                width: 240px;
+                transform: translateX(-100%);
+                z-index: 1000;
+                box-shadow: 2px 0 16px rgba(30, 64, 175, 0.13);
+                border-radius: 0 0 var(--radius) 0;
+                background: var(--sidebar-bg);
+                transition: transform var(--transition);
+            }
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            #menu-toggle {
+                display: block;
+            }
+            .main-content {
+                margin: 1.5rem 0.5rem 1.5rem 0.5rem;
+                padding: 1.2rem 0.7rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .main-content {
+                margin: 1rem 0.2rem;
+                padding: 0.7rem 0.3rem;
+                font-size: 0.98rem;
+            }
+            .footer {
+                font-size: 0.92rem;
+                padding: 0.7rem;
+            }
+            .sidebar {
+                width: 90vw;
+                min-width: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button id="menu-toggle" onclick="toggleSidebar()">☰</button>
+        <h1 style="font-size:2.1rem; letter-spacing:2px; font-weight:700;">MACHINE LEARNING</h1>
+    </div>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <h3>Modules</h3>
+            <ul>
+                <li>
+                    <a href="#intro" class="toggle">1. Introduction to Machine Learning</a>
+                    <ul>
+                        <li><a href="#definition">1.1 Definition</a></li>
+                        <li><a href="#history">1.2 History</a></li>
+                        <li><a href="#importance">1.3 Importance</a></li>
+                        <li><a href="#applications">1.4 Real-world Applications</a></li>
+                        <li><a href="#facts">1.5 Interesting Facts</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#types" class="toggle">2. Types of Machine Learning</a>
+                    <ul>
+                        <li><a href="#supervised">2.1 Supervised Learning</a></li>
+                        <li><a href="#unsupervised">2.2 Unsupervised Learning</a></li>
+                        <li><a href="#reinforcement">2.3 Reinforcement Learning</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#proscons" class="toggle">3. Pros & Cons</a>
+                    <ul>
+                        <li><a href="#pros">3.1 Advantages</a></li>
+                        <li><a href="#cons">3.2 Disadvantages</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#supervised-learning" class="toggle">4. Supervised Learning</a>
+                    <ul>
+                        <li>
+                            <a href="#regression">4.1 Regression</a>
+                            <ul>
+                                <li>
+                                    <a href="#linear">4.1.1 Linear Regression</a>
+                                    <ul>
+                                        <li><a href="#simple-linear">4.1.1.1 Simple Linear Regression</a></li>
+                                        <li><a href="#multiple-linear">4.1.1.2 Multiple Linear Regression</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#polynomial">4.1.2 Polynomial Regression</a></li>
+                                <ul>
+                                    <li><a href="#tree-pruning">4.1.4.1 Pruning in Decision Trees</a></li>
+                                </ul>
+                                <li><a href="#forest-reg">4.1.5 Random Forest Regressor</a></li>
+                                <li><a href="#svr">4.1.6 Support Vector Regressor (SVR)</a></li>
+                                <li><a href="#underfitting">4.1.8 Underfitting</a></li>
+                                <li><a href="#overfitting">4.1.9 Overfitting</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#classification">4.2 Classification</a>
+                            <ul>
+                                <li><a href="#logistic">4.2.1 Logistic Regression</a></li>
+                                <li><a href="#knn-class">4.2.2 KNN Classifier</a></li>
+                                <li>
+                                    <a href="#naive-bayes">4.2.3 Naïve Bayes</a>
+                                    <ul>
+                                        <li><a href="#multinomial">4.2.3.1 Multinomial</a></li>
+                                        <li><a href="#gaussian">4.2.3.2 Gaussian</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#tree-class">4.2.4 Decision Tree</a></li>
+                                <li><a href="#forest-class">4.2.5 Random Forest</a></li>
+                                <li><a href="#svm">4.2.6 SVM</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#validation" class="toggle">5. Validation & Optimization</a>
+                    <ul>
+                        <li><a href="#valset">5.1 Validation Set</a></li>
+                        <li><a href="#learningrate">5.2 Learning Rate</a></li>
+                        <li><a href="#scaling">5.3 Feature Scaling</a></li>
+                        <li><a href="#pruning">5.4 Pruning</a></li>
+                        <li><a href="#hyper">5.5 Hyperparameter Tuning</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#unsupervised" class="toggle">6. Unsupervised Learning</a>
+                    <ul>
+                        <li>
+                            <a href="#clustering">6.1 Clustering</a>
+                            <ul>
+                                <li><a href="#kmeans">6.1.1 K-Means</a></li>
+                                <li><a href="#elbow">6.1.1.1 Elbow Method</a></li>
+                                <li><a href="#kmeanspp">6.1.1.2 K-Means++</a></li>
+                                <li><a href="#hierarchical">6.1.2 Hierarchical Clustering</a></li>
+                                <li><a href="#agglomerative">6.1.2.1 Agglomerative</a></li>
+                                <li><a href="#divisive">6.1.2.2 Divisive</a></li>
+                                <li><a href="#dendrograms">6.1.2.3 Dendrograms</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#association">6.2 Association</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#anomaly" class="toggle">7. Anomaly Detection</a>
+                    <ul>
+                        <li><a href="#gaussian">7.1 Gaussian Distribution</a></li>
+                        <li><a href="#epsilon">7.2 Threshold (Epsilon)</a></li>
+                        <li><a href="#usecases">7.3 Use Cases</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#recommendation" class="toggle">8. Recommendation Systems</a>
+                    <ul>
+                        <li><a href="#collaborative">8.1 Collaborative Filtering</a></li>
+                        <li><a href="#matrix">8.1.1 Matrix Factorization</a></li>
+                        <li><a href="#gd">8.1.2 Gradient Descent</a></li>
+                        <li><a href="#applications">8.1.3 Applications</a></li>
+                        <li><a href="#content">8.2 Content-Based Filtering</a></li>
+                        <li><a href="#feature-vectors">8.2.1 Feature Vectors</a></li>
+                        <li><a href="#neural">8.2.2 Neural Networks</a></li>
+                        <li><a href="#similarity">8.2.3 Similarity</a></li>
+                        <li><a href="#hybrid">8.3 Hybrid Approach</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#pca" class="toggle">9. Dimensionality Reduction</a>
+                    <ul>
+                        <li><a href="#pca-technique">9.1 PCA</a></li>
+                        <li><a href="#pc-components">9.1.1 PC1 & PC2</a></li>
+                        <li><a href="#projection">9.1.2 Projection</a></li>
+                        <li><a href="#visualization">9.1.3 Visualization</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2 id="intro">Welcome to the Machine Learning Course</h2>
+            <p id="definition"><strong>Machine Learning (ML)</strong> is a branch of artificial intelligence that enables computers to learn from data and make predictions or decisions without being explicitly programmed. ML powers many modern technologies, from recommendation systems and voice assistants to self-driving cars and medical diagnostics.</p>
+            
+            <h3 id="history">History of Machine Learning</h3>
+            <p>
+                The concept of machine learning dates back to the 1950s. Alan Turing’s question, "Can machines think?" inspired early research. In 1952, Arthur Samuel developed a self-learning checkers program, and in 1957, Frank Rosenblatt invented the perceptron, an early neural network. The field has since evolved rapidly, with breakthroughs in algorithms, computing power, and data availability. Today, ML is a core part of AI research and industry applications.
+            </p>
+            
+            <h3 id="importance">Importance of Machine Learning</h3>
+            <ul>
+                <li>Automates decision-making and repetitive tasks.</li>
+                <li>Enables discovery of patterns in large datasets.</li>
+                <li>Drives innovation in healthcare, finance, transportation, and more.</li>
+                <li>Improves user experiences through personalization and recommendations.</li>
+                <li>Supports scientific research and data-driven insights.</li>
+            </ul>
+            
+            <h3 id="applications">Real-world Applications</h3>
+            <ul>
+                <li>Spam detection in emails</li>
+                <li>Fraud detection in banking</li>
+                <li>Speech and image recognition</li>
+                <li>Product recommendations (e.g., Netflix, Amazon)</li>
+                <li>Medical diagnosis and drug discovery</li>
+                <li>Autonomous vehicles</li>
+            </ul>
+            
+            <div class="facts" id="facts">
+                <strong>Did you know?</strong>
+                <ul>
+                    <li>The term "machine learning" was coined by Arthur Samuel in 1959.</li>
+                    <li>Deep learning, a subset of ML, powers technologies like voice assistants and facial recognition.</li>
+                    <li>ML models can sometimes outperform humans in tasks like image classification and game playing.</li>
+                    <li>Data quality is often more important than algorithm complexity for ML success.</li>
+                </ul>
+            </div>
+            
+            <h3 id="proscons">Pros & Cons of Machine Learning</h3>
+            <div class="pros-cons">
+                <div>
+                    <h4 id="pros">Advantages</h4>
+                    <ul>
+                        <li>Can handle large and complex datasets efficiently.</li>
+                        <li>Improves over time with more data (learning).</li>
+                        <li>Automates and optimizes decision-making processes.</li>
+                        <li>Enables discovery of hidden patterns and insights.</li>
+                        <li>Reduces human intervention for repetitive tasks.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 id="cons">Disadvantages</h4>
+                    <ul>
+                        <li>Requires large amounts of quality data.</li>
+                        <li>Can be a "black box"—hard to interpret decisions.</li>
+                        <li>Prone to bias if training data is biased.</li>
+                        <li>High computational and resource costs.</li>
+                        <li>May overfit or underfit if not properly tuned.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="note">
+                💡 <strong>Tip:</strong> Consistent practice and experimentation with real datasets are key to mastering machine learning. Stay curious and keep exploring!
+            </div>
+        </main>
+    </div>
+    <footer class="footer">
+        © 2025 Machine Learning Course | All rights reserved.
+    </footer>
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("active");
+        }
+        // Sidebar accordion logic
+        document.querySelectorAll('.sidebar > ul > li > a.toggle').forEach(function(heading) {
+            heading.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Close all open headings except the clicked one
+                document.querySelectorAll('.sidebar > ul > li.open').forEach(function(openLi) {
+                    if (openLi !== heading.parentElement) {
+                        openLi.classList.remove('open');
+                    }
+                });
+                // Toggle current
+                heading.parentElement.classList.toggle('open');
+            });
+        });
+        // Optional: Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.getElementById('menu-toggle');
+            if (window.innerWidth <= 900 && sidebar.classList.contains('active')) {
+                if (!sidebar.contains(e.target) && e.target !== toggle) {
+                    sidebar.classList.remove('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html></div>

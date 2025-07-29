@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Module 1: Introduction to Machine Learning</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f8fb;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e88e5;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: #0d47a1;
+      margin-top: 40px;
+      border-bottom: 2px solid #e0e0e0;
+      padding-bottom: 8px;
+    }
+
+    p {
+      color: #333;
+      line-height: 1.8;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    .example, .key-points, .extra-facts {
+      padding: 14px 20px;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+
+    .example {
+      background-color: #e3f2fd;
+      border-left: 5px solid #1e88e5;
+    }
+
+    .key-points {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffc107;
+    }
+
+    .extra-facts {
+      background-color: #ede7f6;
+      border-left: 5px solid #7e57c2;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Module 1: Introduction to Machine Learning</h1>
+
+    <!-- 1.1 Definition -->
+    <div id="definition" class="section">
+      <h2>1.1 Definition</h2>
+      <p>
+        Machine Learning (ML) is a branch of artificial intelligence (AI) that enables systems to automatically learn and improve from experience without being explicitly programmed. ML algorithms analyze data, detect patterns, and make decisions with minimal human intervention.
+      </p>
+      <p>
+        It is often used when writing explicit rules for handling data is impractical or impossible — for example, recognizing faces or detecting spam emails.
+      </p>
+
+      <div class="example">
+        <strong>Example:</strong> A credit card fraud detection system learns from past transactions labeled as "fraud" or "legit" and flags suspicious activity in real-time.
+      </div>
+
+      <div class="key-points">
+        <strong>Key Points:</strong>
+        <ul>
+          <li>ML is data-driven and experience-based.</li>
+          <li>It eliminates the need for hardcoded logic in many tasks.</li>
+          <li>Focuses on prediction, classification, optimization, and clustering.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.2 History -->
+    <div id="history" class="section">
+      <h2>1.2 History</h2>
+      <p>
+        The concept of machine learning was born from early studies in pattern recognition and computational learning theory. In 1959, Arthur Samuel defined it as the “field of study that gives computers the ability to learn without being explicitly programmed.”
+      </p>
+      <p>
+        Early ML models were simple linear regressions and decision trees. In the 1990s, techniques like Support Vector Machines (SVMs) and ensemble learning (e.g., Random Forests) became popular. The real breakthrough came with deep learning in the 2010s, powered by neural networks and GPUs.
+      </p>
+
+      <div class="key-points">
+        <strong>Timeline Highlights:</strong>
+        <ul>
+          <li>1950s – Initial exploration of learning algorithms</li>
+          <li>1980s – Neural networks re-emerged (backpropagation)</li>
+          <li>2012 – Deep Learning rose with AlexNet (ImageNet win)</li>
+          <li>2020s – ML applied at scale across industries</li>
+        </ul>
+      </div>
+
+      <div class="example">
+        <strong>Example:</strong> IBM’s Deep Blue chess-playing computer used basic heuristics, while AlphaZero (by DeepMind) learned to master chess through ML techniques.
+      </div>
+    </div>
+
+    <!-- 1.3 Importance -->
+    <div id="importance" class="section">
+      <h2>1.3 Importance</h2>
+      <p>
+        Machine Learning has transformed how we solve problems and make decisions. It is at the heart of predictive systems, automation, and intelligent tools. ML enables machines to adapt to new data and improve their performance over time.
+      </p>
+      <p>
+        In a data-rich world, ML helps extract insights, find trends, and generate value by making predictions and classifications faster and more accurately than traditional programming methods.
+      </p>
+
+      <div class="example">
+        <strong>Example:</strong> In agriculture, ML algorithms analyze satellite images and predict optimal planting strategies or detect crop diseases early.
+      </div>
+
+      <div class="key-points">
+        <strong>Key Benefits:</strong>
+        <ul>
+          <li>Fuels data-driven decision making</li>
+          <li>Increases efficiency and productivity</li>
+          <li>Continuously learns and adapts from new data</li>
+          <li>Drives innovation across sectors</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.4 Real-world Applications -->
+    <div id="applications" class="section">
+      <h2>1.4 Real-world Applications</h2>
+      <p>
+        Machine Learning applications are everywhere, often powering systems we use daily without realizing it. From personalized content recommendations to self-driving technology, ML is embedded into many services.
+      </p>
+
+      <ul>
+        <li><strong>Healthcare:</strong> Cancer detection, medical diagnostics, drug discovery</li>
+        <li><strong>Finance:</strong> Credit scoring, fraud detection, stock predictions</li>
+        <li><strong>Retail:</strong> Personalized ads, demand forecasting, customer segmentation</li>
+        <li><strong>Transport:</strong> Autonomous vehicles, route planning, traffic forecasting</li>
+        <li><strong>Cybersecurity:</strong> Threat detection, intrusion prevention</li>
+      </ul>
+
+      <div class="example">
+        <strong>Example:</strong> Amazon’s recommendation engine suggests products based on your browsing history using collaborative filtering and supervised learning.
+      </div>
+
+      <div class="key-points">
+        <strong>Application Types:</strong>
+        <ul>
+          <li><strong>Supervised Learning:</strong> Spam detection, fraud classification</li>
+          <li><strong>Unsupervised Learning:</strong> Customer segmentation, market clustering</li>
+          <li><strong>Reinforcement Learning:</strong> Game playing, robotic control</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 1.5 Interesting Facts -->
+    <div id="facts" class="section">
+      <h2>1.5 Interesting Facts</h2>
+      <ul>
+        <li>Machine Learning models can analyze millions of images in seconds – far faster than humans.</li>
+        <li>Deep learning models are inspired by how human brains work, using artificial "neurons."</li>
+        <li>The voice assistants (Alexa, Siri, Google Assistant) all use ML to understand and respond.</li>
+        <li>ML has helped decode ancient scripts and accelerate climate modeling.</li>
+      </ul>
+
+      <div class="example">
+        <strong>Example:</strong> ML models trained on satellite imagery helped identify poverty-stricken regions in Africa, aiding humanitarian efforts.
+      </div>
+
+      <div class="extra-facts">
+        <strong>Fun Facts:</strong>
+        <ul>
+          <li>Netflix saves over $1 billion annually by using ML to reduce subscriber churn.</li>
+          <li>The AI in your smartphone camera adjusts brightness, sharpness, and filters using ML models.</li>
+          <li>ML helped develop COVID-19 vaccine simulations and gene analysis models in record time.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

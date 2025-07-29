@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Module 4: Supervised Learning</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #f4f8fb;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+    }
+
+    h1, h2, h3, h4 {
+      color: #0d47a1;
+      margin-top: 30px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e88e5;
+    }
+
+    p {
+      line-height: 1.8;
+      color: #333;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .example, .key-points, .extra-facts {
+      padding: 14px 20px;
+      margin: 20px 0;
+      border-radius: 6px;
+    }
+
+    .example { background-color: #e3f2fd; border-left: 5px solid #1e88e5; }
+    .key-points { background-color: #fff3cd; border-left: 5px solid #ffc107; }
+    .extra-facts { background-color: #ede7f6; border-left: 5px solid #7e57c2; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Module 4: Supervised Learning</h1>
+
+    <!-- 4.1 Regression -->
+    <h2 id="regression">4.1 Regression</h2>
+    <p>Regression is used when the output variable is a continuous value. It helps in predicting real-world quantities such as prices, sales, or temperature.</p>
+
+    <!-- Linear Regression -->
+    <h3 id="linear">4.1.1 Linear Regression</h3>
+    <p>Models the relationship between inputs and a continuous output using a straight line.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Predicting monthly electricity usage from square footage.<br>
+      <strong>Example 2:</strong> Estimating the price of a used laptop based on age and brand.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Assumes a linear relationship.</li>
+        <li>Minimizes the sum of squared errors.</li>
+        <li>Fast to train and easy to interpret.</li>
+        <li>Prone to underfitting on complex data.</li>
+      </ul>
+    </div>
+
+    <!-- Simple Linear Regression -->
+    <h4 id="simple-linear">4.1.1.1 Simple Linear Regression</h4>
+    <p>Uses one independent variable to predict a continuous outcome.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Predicting crop yield based on rainfall.<br>
+      <strong>Example 2:</strong> Estimating weight based on height.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>One input, one output.</li>
+        <li>Best for linear trends.</li>
+        <li>Model: y = mx + b</li>
+        <li>Limited by simplicity.</li>
+      </ul>
+    </div>
+
+    <!-- Multiple Linear Regression -->
+    <h4 id="multiple-linear">4.1.1.2 Multiple Linear Regression</h4>
+    <p>Involves two or more independent variables to predict the outcome.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Predicting house prices based on area, number of rooms, and location.<br>
+      <strong>Example 2:</strong> Estimating income from education level, age, and work experience.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Supports multiple input variables.</li>
+        <li>Useful for more realistic datasets.</li>
+        <li>Still assumes linearity.</li>
+        <li>Susceptible to multicollinearity.</li>
+      </ul>
+    </div>
+
+    <!-- Polynomial Regression -->
+    <h3 id="polynomial">4.1.2 Polynomial Regression</h3>
+    <p>Extends linear regression by allowing curved relationships between variables.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Modeling population growth over time.<br>
+      <strong>Example 2:</strong> Predicting CPU temperature based on load.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Fits curves using polynomial terms (x², x³, ...).</li>
+        <li>Can model complex trends.</li>
+        <li>Higher degrees increase overfitting risk.</li>
+        <li>Requires feature transformation.</li>
+      </ul>
+    </div>
+
+    <!-- Pruning -->
+    <h4 id="tree-pruning">4.1.4.1 Pruning in Decision Trees</h4>
+    <p>Reduces model complexity by trimming branches from decision trees.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Optimizing decision trees used for loan approvals.<br>
+      <strong>Example 2:</strong> Preventing a medical diagnosis model from overfitting.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Removes less informative branches.</li>
+        <li>Improves generalization.</li>
+        <li>Two types: pre-pruning and post-pruning.</li>
+        <li>Reduces training time and size.</li>
+      </ul>
+    </div>
+
+    <!-- Random Forest Regressor -->
+    <h3 id="forest-reg">4.1.5 Random Forest Regressor</h3>
+    <p>Uses an ensemble of decision trees for robust predictions.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Predicting rental prices across cities.<br>
+      <strong>Example 2:</strong> Estimating yield from farmland data.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Reduces overfitting using multiple trees.</li>
+        <li>Good for large datasets.</li>
+        <li>Handles non-linear data well.</li>
+        <li>Slower than individual models.</li>
+      </ul>
+    </div>
+
+    <!-- SVR -->
+    <h3 id="svr">4.1.6 Support Vector Regressor (SVR)</h3>
+    <p>Uses support vectors and margin of tolerance to predict values.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Predicting stock prices.<br>
+      <strong>Example 2:</strong> Modeling house energy usage.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Effective in high-dimensional spaces.</li>
+        <li>Kernel trick allows non-linear modeling.</li>
+        <li>Robust to outliers.</li>
+        <li>Requires careful parameter tuning.</li>
+      </ul>
+    </div>
+
+    <!-- Underfitting -->
+    <h3 id="underfitting">4.1.8 Underfitting</h3>
+    <p>Occurs when a model is too simple to capture data patterns.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Using linear regression on non-linear data.<br>
+      <strong>Example 2:</strong> Predicting traffic with only time of day.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>High training and test errors.</li>
+        <li>Model is too simple.</li>
+        <li>Can be fixed with more features or complex models.</li>
+      </ul>
+    </div>
+
+    <!-- Overfitting -->
+    <h3 id="overfitting">4.1.9 Overfitting</h3>
+    <p>Occurs when a model memorizes training data, failing to generalize.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Deep decision tree with noise.<br>
+      <strong>Example 2:</strong> Complex polynomial model on few samples.
+    </div>
+    <div class="extra-facts">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Low training error, high test error.</li>
+        <li>Regularization and pruning help mitigate it.</li>
+        <li>Use cross-validation to detect.</li>
+      </ul>
+    </div>
+
+    <!-- 4.2 Classification -->
+    <h2 id="classification">4.2 Classification</h2>
+    <p>Classification is used when the output is a discrete class. It answers questions like “Is this email spam?” or “Does this image contain a cat?”</p>
+
+    <!-- Logistic Regression -->
+    <h3 id="logistic">4.2.1 Logistic Regression</h3>
+    <p>Predicts probability of a binary or multi-class outcome.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Spam email detection.<br>
+      <strong>Example 2:</strong> Predicting customer churn.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Outputs values between 0 and 1.</li>
+        <li>Uses sigmoid function for prediction.</li>
+        <li>Good for linearly separable data.</li>
+      </ul>
+    </div>
+
+    <!-- KNN -->
+    <h3 id="knn-class">4.2.2 KNN Classifier</h3>
+    <p>Classifies based on majority class among k nearest neighbors.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Handwritten digit classification.<br>
+      <strong>Example 2:</strong> Recommending movies based on user profile.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>No training phase (“lazy” learner).</li>
+        <li>Simple and intuitive.</li>
+        <li>Computationally expensive on large data.</li>
+      </ul>
+    </div>
+
+    <!-- Naive Bayes -->
+    <h3 id="naive-bayes">4.2.3 Naïve Bayes</h3>
+    <p>Uses Bayes' Theorem assuming feature independence.</p>
+    <div class="example">
+      <strong>Example 1:</strong> News categorization.<br>
+      <strong>Example 2:</strong> Sentiment analysis of reviews.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Fast and efficient.</li>
+        <li>Performs well on text data.</li>
+        <li>Assumes independence between features.</li>
+      </ul>
+    </div>
+
+    <h4 id="multinomial">4.2.3.1 Multinomial</h4>
+    <p>Handles word counts and frequencies in text classification.</p>
+
+    <h4 id="gaussian">4.2.3.2 Gaussian</h4>
+    <p>Assumes continuous features follow a Gaussian distribution.</p>
+
+    <!-- Decision Tree -->
+    <h3 id="tree-class">4.2.4 Decision Tree</h3>
+    <p>Splits data into branches to reach a decision or class label.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Disease diagnosis from symptoms.<br>
+      <strong>Example 2:</strong> Predicting if a loan will be approved.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Visual and interpretable.</li>
+        <li>Prone to overfitting.</li>
+        <li>Works with both numerical and categorical data.</li>
+      </ul>
+    </div>
+
+    <!-- Random Forest -->
+    <h3 id="forest-class">4.2.5 Random Forest</h3>
+    <p>Combines many decision trees to vote for the best result.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Classifying email as spam or not.<br>
+      <strong>Example 2:</strong> Credit card fraud detection.
+    </div>
+
+    <!-- SVM -->
+    <h3 id="svm">4.2.6 SVM</h3>
+    <p>Finds the optimal hyperplane to separate classes with the widest margin.</p>
+    <div class="example">
+      <strong>Example 1:</strong> Image classification.<br>
+      <strong>Example 2:</strong> Face recognition system.
+    </div>
+    <div class="key-points">
+      <strong>Key Points:</strong>
+      <ul>
+        <li>Effective in high-dimensional space.</li>
+        <li>Can use kernel trick for non-linear data.</li>
+        <li>Requires good parameter tuning.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
